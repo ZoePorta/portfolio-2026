@@ -1,0 +1,38 @@
+# Tasks
+
+## 1. Project foundation
+- [ ] Global CSS: custom properties, @layer, typography, reset
+- [ ] Layout: BaseLayout.astro with nav and footer slots
+- [ ] i18n: route structure + translation files (keys only, no copy yet)
+- [ ] Navbar component with language switcher
+
+## 2. Hero section
+- [ ] Animated gradient background (Aceternity, React island)
+- [ ] Two-column grid layout
+- [ ] Photo + blob shape
+- [ ] Tagline + subtitle + social links
+- [ ] Skill bubbles with fade-in entrance
+
+## 3. Tech stack band
+- [ ] Star grid component
+- [ ] Devicons SVG integration
+- [ ] Scroll entrance animation (Motion vanilla)
+
+## 4. Projects section
+- [ ] Project card component
+- [ ] Cards grid: Wishin, HCTP, Crafty
+- [ ] @container query responsive layout for cards
+
+## 5. Contact section
+- [ ] Parallax floral background
+- [ ] Glassmorphism card
+- [ ] Netlify Forms integration
+
+## 6. Polish & launch
+- [ ] SEO: meta tags, og:image, sitemap
+- [ ] prefers-reduced-motion pass
+- [ ] Accessibility audit
+- [ ] Lighthouse audit
+- [ ] All copy in ES/EN/GL
+- [ ] Tagline final review
+- [ ] Deploy to zoecodes.me
