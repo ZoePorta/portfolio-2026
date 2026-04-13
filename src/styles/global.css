@@ -1,0 +1,77 @@
+@import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+@layer reset, base, components;
+
+/* ─── Design tokens ──────────────────────────────────────────────────────── */
+
+:root {
+  /* Brand colors */
+  --color-sakura: #f5c4e2;       /* sakura pink — primary accent */
+  --color-lavender: #c5bae8;     /* lavender */
+  --color-periwinkle: #b1bef2;   /* periwinkle — cool accent */
+  --color-ice: #dceaf9;          /* ice blue */
+  --color-blush: #fee3ec;        /* blush — very soft backgrounds */
+
+  /* Text */
+  --color-text-primary: #2d1f3d;
+  --color-text-secondary: #7a6b9a;
+
+  /* Surfaces */
+  --color-surface: #faf7fd;
+  --color-white: #ffffff;
+
+  /* Typography */
+  --font-display: 'Bonheur Royale', cursive;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Dark mode — redefine variables only, no component changes needed */
+[data-theme="dark"] {
+  --color-text-primary: #f0eaf8;
+  --color-text-secondary: #c5bae8;
+  --color-surface: #1a1230;
+  --color-white: #231840;
+  /* Brand accent colors remain the same — they work on dark backgrounds */
+}
+
+/* ─── Reset ──────────────────────────────────────────────────────────────── */
+
+@layer reset {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    display: block;
+  }
+}
+
+/* ─── Base ───────────────────────────────────────────────────────────────── */
+
+@layer base {
+  body {
+    font-family: var(--font-body);
+    color: var(--color-text-primary);
+    background-color: var(--color-surface);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    /* All animations and transitions are disabled or reduced here */
+  }
+}
+
+/* ─── Components ─────────────────────────────────────────────────────────── */
+
+@layer components {
+}
