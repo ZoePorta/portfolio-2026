@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import Hero from '../../components/Hero.astro';
 import { useTranslations, type Locale } from '../../i18n/utils';
 
 export function getStaticPaths() {
@@ -15,5 +16,5 @@ const t = useTranslations(lang);
 ---
 
 <BaseLayout title={t('meta.siteTitle')} lang={lang}>
-  <h1>{t('meta.siteTitle')}</h1>
+  <Hero lang={lang} />
 </BaseLayout>
