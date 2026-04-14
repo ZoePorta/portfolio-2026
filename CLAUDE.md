@@ -6,7 +6,10 @@ Always use pnpm. Never suggest npm or yarn commands.
 
 ## Code style
 
-- Native CSS only. No Tailwind, no CSS frameworks.
+- Hybrid CSS/Tailwind model. Native CSS is the default.
+- Use CSS for structural layout, spacing, transitions, hover/focus selectors, media queries, and any style shared uniformly across a group of elements.
+- Use Tailwind only for one-off exceptions: when a single element breaks the norm (different color, weight, font) and handling it in CSS would require a forced or contrived selector. If the same utility would repeat across many elements, put it in CSS instead.
+- No other CSS frameworks or utility libraries.
 - No unnecessary abstractions. This is a single-page portfolio.
 - Use CSS custom properties defined in src/styles/global.css.
 - Follow @layer structure: reset, base, components.
@@ -39,5 +42,5 @@ One task at a time. Do not anticipate future tasks.
 
 - Install dependencies without explaining why.
 - Use npm, npx or yarn.
-- Add CSS frameworks or utility libraries.
+- Add CSS frameworks or utility libraries (beyond Tailwind, which is already configured).
 - Generate placeholder lorem ipsum copy — ask instead.

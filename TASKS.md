@@ -9,11 +9,11 @@
 
 ## 2. Hero section
 
-- [ ] Animated gradient background (Aceternity, React island)
-- [ ] Two-column grid layout
-- [ ] Photo + blob shape
-- [ ] Tagline + subtitle + social links
-- [ ] Skill bubbles with fade-in entrance
+- [x] Animated gradient background (Aceternity, React island)
+- [x] Two-column grid layout
+- [x] Photo + blob shape
+- [x] Tagline + subtitle + social links
+- [x] Skill bubbles with fade-in entrance
 
 ## 3. Tech stack band
 

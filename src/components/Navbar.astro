@@ -15,14 +15,18 @@ const languages = [
 ];
 
 const navLinks = [
-  { label: t('nav.about'),    href: '#about' },
+  { label: t('nav.about'), href: '#about' },
   { label: t('nav.projects'), href: '#projects' },
-  { label: t('nav.contact'),  href: '#contact' },
+  { label: t('nav.contact'), href: '#contact' },
 ];
 ---
 
 <nav class="navbar" aria-label="Main navigation">
-  <a class="navbar__logo" href={`/${lang}/`}>zoecodes</a>
+  <a class="navbar__logo" href={`/${lang}/`}
+    ><span class="font-display text-muted text-4xl font-medium tracking-wide"
+      >zoe</span
+    ><span class="font-body text-periwinkle text-xl">codes</span></a
+  >
 
   <button
     class="navbar__hamburger"
@@ -37,24 +41,39 @@ const navLinks = [
 
   <div class="navbar__menu" id="navbar-menu">
     <ul class="navbar__links" role="list">
-      {navLinks.map(({ label, href }) => (
-        <li><a href={href}>{label}</a></li>
-      ))}
+      {
+        navLinks.map(({ label, href }) => (
+          <li>
+            <a href={href}>{label}</a>
+          </li>
+        ))
+      }
     </ul>
 
     <ul class="navbar__lang" role="list" aria-label="Language switcher">
-      {languages.map(({ code, href }, i) => (
-        <li>
-          {i > 0 && <span class="navbar__lang-separator" aria-hidden="true">·</span>}
-          <a
-            href={href}
-            class:list={['navbar__lang-link', { 'navbar__lang-link--active': code === lang }]}
-            aria-current={code === lang ? 'true' : undefined}
-          >
-            {code.toUpperCase()}
-          </a>
-        </li>
-      ))}
+      {
+        languages.map(({ code, href }, i) => (
+          <li>
+            {i > 0 && (
+              <span class="navbar__lang-separator" aria-hidden="true">
+                ·
+              </span>
+            )}
+            <a
+              href={href}
+              class:list={[
+                'navbar__lang-link',
+                code === lang
+                  ? 'text-sakura font-bold'
+                  : 'text-muted font-medium',
+              ]}
+              aria-current={code === lang ? 'true' : undefined}
+            >
+              {code.toUpperCase()}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </nav>
@@ -73,9 +92,6 @@ const navLinks = [
   }
 
   .navbar__logo {
-    font-family: var(--font-display);
-    font-size: 1.75rem;
-    color: var(--color-text-primary);
     text-decoration: none;
     line-height: 1;
   }
@@ -127,9 +143,7 @@ const navLinks = [
   .navbar__lang-link {
     font-family: var(--font-body);
     font-size: 0.8125rem;
-    font-weight: 500;
     letter-spacing: 0.04em;
-    color: var(--color-text-secondary);
     text-decoration: none;
     transition: color 0.2s ease;
   }
@@ -137,11 +151,6 @@ const navLinks = [
   .navbar__lang-link:hover,
   .navbar__lang-link:focus-visible {
     color: var(--color-text-primary);
-  }
-
-  .navbar__lang-link--active {
-    color: var(--color-sakura);
-    font-weight: 700;
   }
 
   /* Hamburger — hidden on desktop */
@@ -164,19 +173,21 @@ const navLinks = [
     height: 2px;
     background-color: var(--color-text-primary);
     border-radius: 2px;
-    transition: transform 0.25s ease, opacity 0.25s ease;
+    transition:
+      transform 0.25s ease,
+      opacity 0.25s ease;
   }
 
   /* Open state — transform bars into ✕ */
-  .navbar__hamburger[aria-expanded="true"] .navbar__hamburger-bar:nth-child(1) {
+  .navbar__hamburger[aria-expanded='true'] .navbar__hamburger-bar:nth-child(1) {
     transform: translateY(7px) rotate(45deg);
   }
 
-  .navbar__hamburger[aria-expanded="true"] .navbar__hamburger-bar:nth-child(2) {
+  .navbar__hamburger[aria-expanded='true'] .navbar__hamburger-bar:nth-child(2) {
     opacity: 0;
   }
 
-  .navbar__hamburger[aria-expanded="true"] .navbar__hamburger-bar:nth-child(3) {
+  .navbar__hamburger[aria-expanded='true'] .navbar__hamburger-bar:nth-child(3) {
     transform: translateY(-7px) rotate(-45deg);
   }
 
@@ -225,13 +236,17 @@ const navLinks = [
 </style>
 
 <script>
-  const hamburger = document.querySelector<HTMLButtonElement>('.navbar__hamburger');
+  const hamburger =
+    document.querySelector<HTMLButtonElement>('.navbar__hamburger');
   const menu = document.getElementById('navbar-menu');
 
   hamburger?.addEventListener('click', () => {
     const isOpen = hamburger.getAttribute('aria-expanded') === 'true';
     hamburger.setAttribute('aria-expanded', String(!isOpen));
-    hamburger.setAttribute('aria-label', isOpen ? 'Open navigation menu' : 'Close navigation menu');
+    hamburger.setAttribute(
+      'aria-label',
+      isOpen ? 'Open navigation menu' : 'Close navigation menu',
+    );
     menu?.classList.toggle('is-open', !isOpen);
   });
 

@@ -30,6 +30,9 @@
   /* ── Text (aliased to avoid text-text-primary names) ─ */
   --color-foreground: var(--color-text-primary);
   --color-muted: var(--color-text-secondary);
+  /* ── Typography ───────────────────────────────────── */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 @keyframes moveHorizontal {
