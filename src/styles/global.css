@@ -1,4 +1,72 @@
 @import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import 'tailwindcss';
+
+/* ─── Gradient animation (Aceternity BackgroundGradientAnimation) ─────────── */
+
+@theme inline {
+  /* ── Gradient animations ──────────────────────────── */
+  --animate-first: moveVertical 30s ease infinite;
+  --animate-second: moveInCircle 20s reverse infinite;
+  --animate-third: moveInCircle 40s linear infinite;
+  --animate-fourth: moveHorizontal 40s ease infinite;
+  --animate-fifth: moveInCircle 20s ease infinite;
+
+  /* ── Brand colors → bg-sakura, text-lavender, etc. ── */
+  /*
+   * @theme inline does NOT create new CSS variables.
+   * Each entry tells Tailwind to generate utilities (bg-*, text-*, etc.)
+   * that use var(--color-*) directly. Changing the value in :root
+   * propagates to every Tailwind utility automatically.
+   */
+  --color-sakura: var(--color-sakura);
+  --color-lavender: var(--color-lavender);
+  --color-periwinkle: var(--color-periwinkle);
+  --color-ice: var(--color-ice);
+  --color-blush: var(--color-blush);
+
+  /* ── Surfaces ─────────────────────────────────────── */
+  --color-surface: var(--color-surface);
+
+  /* ── Text (aliased to avoid text-text-primary names) ─ */
+  --color-foreground: var(--color-text-primary);
+  --color-muted: var(--color-text-secondary);
+}
+
+@keyframes moveHorizontal {
+  0% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+  50% {
+    transform: translateX(50%) translateY(10%);
+  }
+  100% {
+    transform: translateX(-50%) translateY(-10%);
+  }
+}
+
+@keyframes moveInCircle {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes moveVertical {
+  0% {
+    transform: translateY(-50%);
+  }
+  50% {
+    transform: translateY(50%);
+  }
+  100% {
+    transform: translateY(-50%);
+  }
+}
 
 @layer reset, base, components;
 
@@ -6,11 +74,11 @@
 
 :root {
   /* Brand colors */
-  --color-sakura: #f5c4e2;       /* sakura pink — primary accent */
-  --color-lavender: #c5bae8;     /* lavender */
-  --color-periwinkle: #b1bef2;   /* periwinkle — cool accent */
-  --color-ice: #dceaf9;          /* ice blue */
-  --color-blush: #fee3ec;        /* blush — very soft backgrounds */
+  --color-sakura: #f5c4e2; /* sakura pink — primary accent */
+  --color-lavender: #c5bae8; /* lavender */
+  --color-periwinkle: #b1bef2; /* periwinkle — cool accent */
+  --color-ice: #dceaf9; /* ice blue */
+  --color-blush: #fee3ec; /* blush — very soft backgrounds */
 
   /* Text */
   --color-text-primary: #2d1f3d;
@@ -23,10 +91,22 @@
   /* Typography */
   --font-display: 'Bonheur Royale', cursive;
   --font-body: 'Plus Jakarta Sans', sans-serif;
+
+  /* Background Gradient Animation — edit here to change the hero gradient */
+  --gradient-background-start: #cbd4f8; /* near-white, sakura warmth */
+  --gradient-background-end: #fee3ec; /* soft periwinkle depth */
+  --first-color: 245, 196, 226; /* ≈ sakura */
+  --second-color: 197, 186, 232; /* ≈ lavender */
+  --third-color: 177, 190, 242; /* ≈ periwinkle */
+  --fourth-color: 220, 234, 249; /* ≈ ice */
+  --fifth-color: 254, 227, 236; /* ≈ blush */
+  --pointer-color: 255, 255, 255; /* lavender-sakura mix */
+  --size: 80%;
+  --blending-value: hard-light;
 }
 
 /* Dark mode — redefine variables only, no component changes needed */
-[data-theme="dark"] {
+[data-theme='dark'] {
   --color-text-primary: #f0eaf8;
   --color-text-secondary: #c5bae8;
   --color-surface: #1a1230;
