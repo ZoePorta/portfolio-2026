@@ -1,9 +1,12 @@
 ---
+import { useTranslations, type Locale } from '../i18n/utils';
+
 interface Props {
-  lang: string;
+  lang: Locale;
 }
 
 const { lang } = Astro.props;
+const t = useTranslations(lang);
 
 const languages = [
   { code: 'es', href: '/es/' },
@@ -11,12 +14,10 @@ const languages = [
   { code: 'gl', href: '/gl/' },
 ];
 
-// TODO(i18n): replace with translated strings once i18n is wired up.
-// Link text and aria-label must match the page language for screen readers.
 const navLinks = [
-  { label: 'about me', href: '#about' },
-  { label: 'projects', href: '#projects' },
-  { label: 'contact', href: '#contact' },
+  { label: t('nav.about'),    href: '#about' },
+  { label: t('nav.projects'), href: '#projects' },
+  { label: t('nav.contact'),  href: '#contact' },
 ];
 ---
 

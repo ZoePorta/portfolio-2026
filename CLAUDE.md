@@ -11,6 +11,11 @@ Always use pnpm. Never suggest npm or yarn commands.
 - Use CSS custom properties defined in src/styles/global.css.
 - Follow @layer structure: reset, base, components.
 
+## Routing
+
+Use dynamic [lang] routes with getStaticPaths, not separate files per language.
+Never create src/pages/es/, src/pages/en/ or src/pages/gl/ as separate directories.
+
 ## Animations
 
 - Simple entrance/scroll animations: Motion vanilla in .astro files.

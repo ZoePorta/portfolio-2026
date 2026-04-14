@@ -67,7 +67,7 @@ Aceternity UI components are React islands — specified in each relevant task.
 }
 
 /* Dark mode — redefine variables only, no component changes needed */
-[data-theme="dark"] {
+[data-theme='dark'] {
   --color-text-primary: #f0eaf8;
   --color-text-secondary: #c5bae8;
   --color-surface: #1a1230;
@@ -100,19 +100,18 @@ Spanish (ES) — primary
 English (EN)
 Galician (GL)
 
-Astro route structure:
-
-```
-src/pages/
-  index.astro          → redirect based on browser language
-  es/index.astro
-  en/index.astro
-  gl/index.astro
-```
-
 Translation strings in: `src/i18n/es.ts`, `en.ts`, `gl.ts`
 The tagline "The craft is in the details" stays in English across all three versions — intentional aesthetic choice.
 Galician translations must be reviewed manually — models tend to introduce Spanish or Portuguese interference.
+
+### Route structure
+
+Single dynamic route handles all languages:
+
+- src/pages/[lang]/index.astro — generates /es/, /en/, /gl/ via getStaticPaths
+- src/pages/index.astro — redirects to /es/
+
+Locale is validated in each page and falls back to /es/ if invalid.
 
 ### Documentation language
 
