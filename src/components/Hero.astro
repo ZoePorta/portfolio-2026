@@ -125,6 +125,13 @@ const { lang } = Astro.props;
 <style>
   /* ── Layout ──────────────────────────────────────────────────── */
 
+  /* 
+   * Added the padding to .hero__content instead of .hero so it covers the background  * gradient animation
+  */
+  .hero {
+    padding-bottom: 0;
+  }
+
   /*
    * :global() is required here because className="hero__content" is passed as a prop
    * to BackgroundGradientAnimation and lands on a React-rendered div, which Astro's
@@ -138,6 +145,8 @@ const { lang } = Astro.props;
     gap: 3rem;
     align-items: center;
     padding: 2rem 4rem 6rem;
+
+    padding-bottom: calc(var(--wave-height) + var(--section-padding));
   }
 
   /* ── Photo column ────────────────────────────────────────────── */

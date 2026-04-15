@@ -1,3 +1,4 @@
+@layer reset, base, components;
 @import url('https://fonts.googleapis.com/css2?family=Bonheur+Royale&family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import 'tailwindcss';
 
@@ -77,8 +78,6 @@
   }
 }
 
-@layer reset, base, components;
-
 /* ─── Design tokens ──────────────────────────────────────────────────────── */
 
 :root {
@@ -114,7 +113,7 @@
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
   /* Section wave transitions */
-  --wave-height: 4rem;
+  --wave-height: 3rem;
   --section-padding: 5rem;
 
   /* Background Gradient Animation — edit here to change the hero gradient */
@@ -181,11 +180,15 @@
 @layer components {
   /* ── Section wave system ─────────────────────────────────────────── */
 
-  section {
+  section:not(:last-of-type) {
     position: relative;
     padding-bottom: calc(var(--wave-height) + var(--section-padding));
     margin-bottom: calc(var(--wave-height) * -1);
     /* clip-path is set dynamically by the waveClip script in BaseLayout */
+  }
+
+  section:not(:first-of-type) {
+    padding-top: calc(var(--wave-height) + var(--section-padding));
   }
 
   .hero {

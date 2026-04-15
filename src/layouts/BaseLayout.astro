@@ -28,7 +28,7 @@ const { title, lang } = Astro.props;
     </main>
     <footer></footer>
     <script>
-      const WAVE_PX = 64; // = --wave-height (4 rem × 16 px — update if token changes)
+      const WAVE_PX = 48; // = --wave-height (3 rem × 16 px — update if token changes)
 
       type WaveFn = (W: number, H: number, a: number) => string;
 
@@ -62,12 +62,6 @@ const { title, lang } = Astro.props;
           ` S${W * 0.6},${H - a * 0.05} ${W * 0.55},${H - a * 0.06}` +
           ` S${W * 0.38},${H - a * 0.85} ${W * 0.32},${H - a * 0.78}` +
           ` S${W * 0.14},${H - a * 0.12} 0,${H - a * 0.18}`,
-
-        // 2 humps — gentler overall (max 68%), closing section feels quieter
-        contact: (W, H, a) =>
-          `C${W * 0.88},${H - a * 0.12} ${W * 0.72},${H - a * 0.62} ${W * 0.65},${H - a * 0.58}` +
-          ` S${W * 0.5},${H - a * 0.05} ${W * 0.46},${H - a * 0.06}` +
-          ` S${W * 0.24},${H - a * 0.68} 0,${H - a * 0.32}`,
       };
 
       function setWave(el: HTMLElement): void {
@@ -88,10 +82,12 @@ const { title, lang } = Astro.props;
         entries.forEach((e) => setWave(e.target as HTMLElement)),
       );
 
-      document.querySelectorAll<HTMLElement>('section').forEach((el) => {
-        ro.observe(el);
-        setWave(el);
-      });
+      document
+        .querySelectorAll<HTMLElement>('section:not(:last-of-type)')
+        .forEach((el) => {
+          ro.observe(el);
+          setWave(el);
+        });
     </script>
   </body>
 </html>
