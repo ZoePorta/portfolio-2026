@@ -95,6 +95,10 @@
   --font-display: 'Bonheur Royale', cursive;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
+  /* Section wave transitions */
+  --wave-height: 4rem;
+  --section-padding: 5rem;
+
   /* Background Gradient Animation — edit here to change the hero gradient */
   --gradient-background-start: #cbd4f8; /* near-white, sakura warmth */
   --gradient-background-end: #fee3ec; /* soft periwinkle depth */
@@ -157,4 +161,17 @@
 /* ─── Components ─────────────────────────────────────────────────────────── */
 
 @layer components {
+  /* ── Section wave system ─────────────────────────────────────────── */
+
+  section {
+    position: relative;
+    padding-bottom: calc(var(--wave-height) + var(--section-padding));
+    margin-bottom: calc(var(--wave-height) * -1);
+    /* clip-path is set dynamically by the waveClip script in BaseLayout */
+  }
+
+  .hero      { z-index: 5; }
+  .tech-band { z-index: 4; }
+  .projects  { z-index: 3; }
+  .contact   { z-index: 2; }
 }

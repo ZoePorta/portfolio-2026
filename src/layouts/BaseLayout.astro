@@ -1,10 +1,11 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
+import type { Locale } from '../i18n/utils';
 
 interface Props {
   title: string;
-  lang: string;
+  lang: Locale;
 }
 
 const { title, lang } = Astro.props;
@@ -25,7 +26,72 @@ const { title, lang } = Astro.props;
     <main>
       <slot />
     </main>
-    <footer>
-    </footer>
+    <footer></footer>
+    <script>
+      const WAVE_PX = 64; // = --wave-height (4 rem × 16 px — update if token changes)
+
+      type WaveFn = (W: number, H: number, a: number) => string;
+
+      /**
+       * Per-section wave profiles.
+       * Each function returns the cubic-bezier segments that run from (W, H) → (0, H).
+       * The caller wraps them in: M0,0 L{W},0 L{W},{H} …segments… Z
+       */
+      /**
+       * S (smooth cubic bezier) auto-mirrors the previous segment's last control
+       * point, guaranteeing C1 continuity — no kinks at any joint, ever.
+       * Valleys and endpoints don't need to sit on y=H; the wave can start/end
+       * and oscillate at any height within the wave zone.
+       */
+      const waveProfiles: Record<string, WaveFn> = {
+        // 2 humps — peak ~60%, soft valley ~36%, second peak near left edge
+        hero: (W, H, a) =>
+          `C${W * 0.85},${H - a * 0.04} ${W * 0.7},${H - a * 0.88} ${W * 0.6},${H - a * 0.82}` +
+          ` S${W * 0.4},${H - a * 0.06} ${W * 0.36},${H - a * 0.08}` +
+          ` S${W * 0.16},${H - a * 0.86} 0,${H - a * 0.3}`,
+
+        // 2 humps — peak ~66%, valley ~45%, taller left peak, ends higher than it starts
+        'tech-band': (W, H, a) =>
+          `C${W * 0.88},${H - a * 0.1} ${W * 0.74},${H - a * 0.7} ${W * 0.66},${H - a * 0.65}` +
+          ` S${W * 0.5},${H - a * 0.05} ${W * 0.45},${H - a * 0.06}` +
+          ` S${W * 0.22},${H - a * 0.84} 0,${H - a * 0.42}`,
+
+        // 3 humps — small right (~72%), valley (~55%), medium (~32%), ends near baseline
+        projects: (W, H, a) =>
+          `C${W * 0.9},${H - a * 0.06} ${W * 0.8},${H - a * 0.6} ${W * 0.72},${H - a * 0.55}` +
+          ` S${W * 0.6},${H - a * 0.05} ${W * 0.55},${H - a * 0.06}` +
+          ` S${W * 0.38},${H - a * 0.85} ${W * 0.32},${H - a * 0.78}` +
+          ` S${W * 0.14},${H - a * 0.12} 0,${H - a * 0.18}`,
+
+        // 2 humps — gentler overall (max 68%), closing section feels quieter
+        contact: (W, H, a) =>
+          `C${W * 0.88},${H - a * 0.12} ${W * 0.72},${H - a * 0.62} ${W * 0.65},${H - a * 0.58}` +
+          ` S${W * 0.5},${H - a * 0.05} ${W * 0.46},${H - a * 0.06}` +
+          ` S${W * 0.24},${H - a * 0.68} 0,${H - a * 0.32}`,
+      };
+
+      function setWave(el: HTMLElement): void {
+        const W = el.offsetWidth;
+        const H = el.offsetHeight;
+        const a = WAVE_PX;
+        const key = Object.keys(waveProfiles).find((k) =>
+          el.classList.contains(k),
+        );
+        const segs = key
+          ? waveProfiles[key](W, H, a)
+          : `C${W * 0.75},${H} ${W * 0.667},${H - a} ${W * 0.5},${H}` +
+            ` C${W * 0.333},${H - a} ${W * 0.25},${H} 0,${H}`;
+        el.style.clipPath = `path('M0,0 L${W},0 L${W},${H} ${segs} Z')`;
+      }
+
+      const ro = new ResizeObserver((entries) =>
+        entries.forEach((e) => setWave(e.target as HTMLElement)),
+      );
+
+      document.querySelectorAll<HTMLElement>('section').forEach((el) => {
+        ro.observe(el);
+        setWave(el);
+      });
+    </script>
   </body>
 </html>

@@ -11,9 +11,8 @@ interface Props {
 const { lang } = Astro.props;
 ---
 
-<BackgroundGradientAnimation client:load>
-  <div class="hero-wrapper">
 <section class="hero" aria-labelledby="hero-tagline">
+  <BackgroundGradientAnimation client:load className="hero__content">
 
   <!-- Left column: photo -->
   <div class="hero__photo-col">
@@ -90,21 +89,20 @@ const { lang } = Astro.props;
 
   </div>
 
+  </BackgroundGradientAnimation>
 </section>
-  </div>
-</BackgroundGradientAnimation>
 
 <style>
-  /* ── Gradient wrapper ────────────────────────────────────────── */
-
-  .hero-wrapper {
-    position: relative;
-    z-index: 1;
-  }
-
   /* ── Layout ──────────────────────────────────────────────────── */
 
-  .hero {
+  /*
+   * :global() is required here because className="hero__content" is passed as a prop
+   * to BackgroundGradientAnimation and lands on a React-rendered div, which Astro's
+   * scope hash never reaches.
+   */
+  :global(.hero__content) {
+    position: relative;
+    z-index: 1; /* above gradient blobs inside BackgroundGradientAnimation */
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 3rem;
@@ -232,7 +230,7 @@ const { lang } = Astro.props;
   /* ── Mobile ──────────────────────────────────────────────────── */
 
   @media (max-width: 768px) {
-    .hero {
+    :global(.hero__content) {
       grid-template-columns: 1fr;
       padding: 2rem 1.5rem 4rem;
       text-align: center;
