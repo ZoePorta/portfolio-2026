@@ -1,21 +1,52 @@
 ---
+import gitSvg from '../assets/icons/git.svg?raw';
+import ghSvg from '../assets/icons/gh.svg?raw';
+import jsSvg from '../assets/icons/js.svg?raw';
+import tsSvg from '../assets/icons/ts.svg?raw';
+import rctSvg from '../assets/icons/rct.svg?raw';
+import expoSvg from '../assets/icons/expo.svg?raw';
+import nodeSvg from '../assets/icons/node.svg?raw';
+import exprSvg from '../assets/icons/expr.svg?raw';
+import sqlSvg from '../assets/icons/sql.svg?raw';
+import htmlSvg from '../assets/icons/html.svg?raw';
+import cssSvg from '../assets/icons/css.svg?raw';
+import twSvg from '../assets/icons/tw.svg?raw';
+import fmSvg from '../assets/icons/fm.svg?raw';
+import awSvg from '../assets/icons/aw.svg?raw';
+import astroSvg from '../assets/icons/astro.svg?raw';
+import vitSvg from '../assets/icons/vite.svg?raw';
+import vtSvg from '../assets/icons/vt.svg?raw';
+import nlfySvg from '../assets/icons/nlfy.svg?raw';
+import figSvg from '../assets/icons/fig.svg?raw';
+import vueSvg from '../assets/icons/vue.svg?raw';
+
 interface Tech {
   name: string;
   abbr: string;
+  icon: string;
 }
 
 const techs: Tech[] = [
-  { name: 'JavaScript', abbr: 'JS' },
-  { name: 'TypeScript', abbr: 'TS' },
-  { name: 'React', abbr: 'RCT' },
-  { name: 'Expo', abbr: 'EXP' },
-  { name: 'Vue', abbr: 'VUE' },
-  { name: 'Node.js', abbr: 'NODE' },
-  { name: 'Express', abbr: 'EXPR' },
-  { name: 'MySQL', abbr: 'SQL' },
-  { name: 'CSS', abbr: 'CSS' },
-  { name: 'Git', abbr: 'GIT' },
-  { name: 'Figma', abbr: 'FIG' },
+  { name: 'Git', abbr: 'GIT', icon: gitSvg },
+  { name: 'GitHub', abbr: 'GH', icon: ghSvg },
+  { name: 'JavaScript', abbr: 'JS', icon: jsSvg },
+  { name: 'TypeScript', abbr: 'TS', icon: tsSvg },
+  { name: 'React', abbr: 'RCT', icon: rctSvg },
+  { name: 'Expo', abbr: 'EXP', icon: expoSvg },
+  { name: 'Node.js', abbr: 'NODE', icon: nodeSvg },
+  { name: 'Express', abbr: 'EXPR', icon: exprSvg },
+  { name: 'MySQL', abbr: 'SQL', icon: sqlSvg },
+  { name: 'HTML', abbr: 'HTML', icon: htmlSvg },
+  { name: 'CSS', abbr: 'CSS', icon: cssSvg },
+  { name: 'Tailwind', abbr: 'TW', icon: twSvg },
+  { name: 'FramerMotion', abbr: 'FM', icon: fmSvg },
+  { name: 'Appwrite', abbr: 'AW', icon: awSvg },
+  { name: 'Astro', abbr: 'ASTRO', icon: astroSvg },
+  { name: 'Vite', abbr: 'VIT', icon: vitSvg },
+  { name: 'Vitest', abbr: 'VT', icon: vtSvg },
+  { name: 'Netlify', abbr: 'Nlfy', icon: nlfySvg },
+  { name: 'Figma', abbr: 'FIG', icon: figSvg },
+  { name: 'Vue', abbr: 'VUE', icon: vueSvg },
 ];
 ---
 
@@ -40,9 +71,7 @@ const techs: Tech[] = [
             >
               <path d="M50,2 Q47,47 2,50 Q47,53 50,98 Q53,53 98,50 Q53,47 50,2Z" />
             </svg>
-            <span class="tech-item__abbr" aria-hidden="true">
-              {tech.abbr}
-            </span>
+            <span class="tech-icon" aria-hidden="true" set:html={tech.icon} />
             <figcaption class="tech-item__name">{tech.name}</figcaption>
           </figure>
         </li>
@@ -131,16 +160,21 @@ const techs: Tech[] = [
     stroke-width: 1.5;
   }
 
-  .tech-item__abbr {
+  .tech-icon {
     grid-row: 1;
     grid-column: 1;
     align-self: center;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--item-on);
     z-index: 1;
-    user-select: none;
+  }
+
+  .tech-icon :global(svg) {
+    fill: currentColor;
+    width: 1.75rem;
+    height: 1.75rem;
   }
 
   /* ── Tech name ───────────────────────────────────────────────── */
@@ -190,7 +224,7 @@ const techs: Tech[] = [
           // Spread items across the first 60% of the scroll range so all are
           // fully visible by the time the section is completely in the viewport.
           // Each item fades over a 7% window of scroll progress.
-          const sliceStart = (i / n) * 0.6;
+          const sliceStart = (i / n) * 0.8;
           const sliceEnd = 0.07;
           const t = Math.max(0, Math.min(1, (p - sliceStart) / sliceEnd));
           item.style.opacity = String(t);
