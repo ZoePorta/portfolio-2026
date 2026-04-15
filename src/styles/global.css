@@ -112,8 +112,8 @@
   --font-display: 'Bonheur Royale', cursive;
   --font-body: 'Plus Jakarta Sans', sans-serif;
 
-  /* Section wave transitions */
-  --wave-height: 3rem;
+  /* Section wave transitions — managed in BaseLayout.astro */
+  /* --wave-height: 3rem; */
   --section-padding: 5rem;
 
   /* Background Gradient Animation — edit here to change the hero gradient */
