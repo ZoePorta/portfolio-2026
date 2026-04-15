@@ -159,8 +159,8 @@ Accessibility is non-negotiable — both an ethical commitment and a frontend sk
 - Grid of technology icons inside 4-point star shapes
 - SVG icons from Devicons or Simple Icons (open license)
 - Star fill colors alternating between lavender, periwinkle, and sakura
-- Stack: JavaScript, TypeScript, React, React Native, Expo, Vue, Node.js,
-  Express, MySQL, CSS, Git, TDD, CI/CD, Figma
+- Stack: JavaScript, TypeScript, React, Expo, Vue, Node.js,
+  Express, MySQL, CSS, Git, pnpm
 
 ### 3. Projects
 

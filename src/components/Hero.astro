@@ -13,63 +13,94 @@ const { lang } = Astro.props;
 
 <section class="hero" aria-labelledby="hero-tagline">
   <BackgroundGradientAnimation client:load className="hero__content">
-
-  <!-- Left column: photo -->
-  <div class="hero__photo-col">
-
-    <Image
-      src={fotoZoe}
-      alt="Zoe Porta, frontend developer"
-      class="hero__photo"
-      widths={[400, 800]}
-      sizes="(max-width: 640px) 80vw, 400px"
-      loading="eager"
-      fetchpriority="high"
-    />
-
-  </div>
-
-  <!-- Right column: text -->
-  <div class="hero__text-col">
-
-    <h1 id="hero-tagline" class="hero__tagline">The craft is in the details</h1>
-
-    {/* TODO: replace with real subtitle copy */}
-    <p class="hero__subtitle">Frontend developer. I build things that are as solid underneath as they are beautiful on the surface.</p>
-
-    <ul class="hero__skills" aria-label="Skills and strengths" role="list">
-      <li>Lateral thinking</li>
-      <li>Makes complexity feel simple</li>
-      <li>Informal tech lead</li>
-      <li>Owns the design</li>
-      <li>Documents for the next dev</li>
-      <li>AI image generation</li>
-      <li>SVG vectorization</li>
-    </ul>
-
-    <div class="hero__ctas">
-      <a class="hero__cta hero__cta--primary" href="#projects">Ver proyectos</a>
-      <a class="hero__cta hero__cta--secondary" href="#" target="_blank" rel="noopener noreferrer">
-        Consulta mi CV
-      </a>
+    <!-- Left column: photo -->
+    <div class="hero__photo-col">
+      <Image
+        src={fotoZoe}
+        alt="Zoe Porta, frontend developer"
+        class="hero__photo"
+        widths={[400, 800]}
+        sizes="(max-width: 640px) 80vw, 400px"
+        loading="eager"
+        fetchpriority="high"
+      />
     </div>
 
-    <ul class="hero__social" role="list" aria-label="Social links">
-      <li>
-        <a href="https://linkedin.com/in/zoeporta" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037
+    <!-- Right column: text -->
+    <div class="hero__text-col">
+      <h1 id="hero-tagline" class="hero__tagline">
+        The craft is in the details
+      </h1>
+
+      {/* TODO: replace with real subtitle copy */}
+      <p class="hero__subtitle">
+        Frontend developer. I build things that are as solid underneath as they
+        are beautiful on the surface.
+      </p>
+
+      <ul class="hero__skills" aria-label="Skills and strengths" role="list">
+        <li>Lateral thinking</li>
+        <li>Makes complexity feel simple</li>
+        <li>Informal tech lead</li>
+        <li>Owns the design</li>
+        <li>Documents for the next dev</li>
+        <li>AI image generation</li>
+        <li>SVG vectorization</li>
+      </ul>
+
+      <div class="hero__ctas">
+        <a class="hero__cta hero__cta--primary" href="#projects"
+          >Ver proyectos</a
+        >
+        <a
+          class="hero__cta hero__cta--secondary"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Consulta mi CV
+        </a>
+      </div>
+
+      <ul class="hero__social" role="list" aria-label="Social links">
+        <li>
+          <a
+            href="https://linkedin.com/in/zoeporta"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037
                      -1.853 0-2.136 1.445-2.136 2.939v5.667H9.989V9h3.12v1.561h.042
                      c.435-.823 1.496-1.691 3.078-1.691 3.292 0 3.9 2.167 3.9 4.984v6.598z
                      M5.337 7.433a1.81 1.81 0 1 1 0-3.62 1.81 1.81 0 0 1 0 3.62z
-                     M6.956 20.452H3.717V9h3.239v11.452z"/>
-          </svg>
-        </a>
-      </li>
-      <li>
-        <a href="https://github.com/ZoePorta" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385
+                     M6.956 20.452H3.717V9h3.239v11.452z"
+              ></path>
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/ZoePorta"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              focusable="false"
+            >
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385
                      .6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04
                      -3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755
                      -1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236
@@ -81,14 +112,13 @@ const { lang } = Astro.props;
                      .765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92
                      .42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286
                      0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297
-                     c0-6.627-5.373-12-12-12"/>
-          </svg>
-        </a>
-      </li>
-    </ul>
-
-  </div>
-
+                     c0-6.627-5.373-12-12-12"
+              ></path>
+            </svg>
+          </a>
+        </li>
+      </ul>
+    </div>
   </BackgroundGradientAnimation>
 </section>
 
@@ -155,9 +185,33 @@ const { lang } = Astro.props;
     font-weight: 500;
     padding: 0.375rem 0.9rem;
     border-radius: 999px;
-    background-color: var(--color-white);
-    color: var(--color-text-secondary);
-    border: 1px solid var(--color-lavender);
+    background-color: var(--ice-surface);
+    color: var(--on-ice);
+    border: 1px solid var(--color-ice);
+  }
+
+  .hero__skills li:nth-child(5n) {
+    background-color: var(--lavender-surface);
+    color: var(--on-lavender);
+    border-color: var(--color-lavender);
+  }
+
+  .hero__skills li:nth-child(5n + 1) {
+    background-color: var(--sakura-surface);
+    color: var(--on-sakura);
+    border-color: var(--color-sakura);
+  }
+
+  .hero__skills li:nth-child(5n + 2) {
+    background-color: var(--periwinkle-surface);
+    color: var(--on-periwinkle);
+    border-color: var(--color-periwinkle);
+  }
+
+  .hero__skills li:nth-child(5n + 3) {
+    background-color: var(--blush-surface);
+    color: var(--on-blush);
+    border-color: var(--color-blush);
   }
 
   /* ── CTAs ────────────────────────────────────────────────────── */
@@ -180,12 +234,13 @@ const { lang } = Astro.props;
 
   .hero__cta--primary {
     background-color: var(--color-sakura);
-    color: var(--color-text-primary);
+    background-image: linear-gradient(135deg, #c58abf, #b1bef2);
+    color: var(--color-white);
   }
 
   .hero__cta--secondary {
-    background-color: transparent;
-    color: var(--color-text-primary);
+    background-color: var(--color-white);
+    color: var(--color-text-secondary);
     border: 1.5px solid var(--color-lavender);
   }
 
@@ -212,7 +267,9 @@ const { lang } = Astro.props;
     background-color: var(--color-white);
     border: 1px solid var(--color-lavender);
     color: var(--color-text-secondary);
-    transition: color 0.2s ease, border-color 0.2s ease;
+    transition:
+      color 0.2s ease,
+      border-color 0.2s ease;
   }
 
   .hero__social a:hover,

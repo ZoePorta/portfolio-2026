@@ -24,6 +24,12 @@
   --color-ice: var(--color-ice);
   --color-blush: var(--color-blush);
 
+  --color-on-sakura: var(--color-on-sakura);
+  --color-on-lavender: var(--color-on-lavender);
+  --color-on-periwinkle: var(--color-on-periwinkle);
+  --color-on-ice: var(--color-on-ice);
+  --color-on-blush: var(--color-on-blush);
+
   /* ── Surfaces ─────────────────────────────────────── */
   --color-surface: var(--color-surface);
 
@@ -82,6 +88,18 @@
   --color-periwinkle: #b1bef2; /* periwinkle — cool accent */
   --color-ice: #dceaf9; /* ice blue */
   --color-blush: #fee3ec; /* blush — very soft backgrounds */
+
+  --on-sakura: #a03878;
+  --on-lavender: #5e38a0;
+  --on-periwinkle: #385aa0;
+  --on-ice: #3a4a8a;
+  --on-blush: #a03878;
+
+  --sakura-surface: rgb(254, 232, 245);
+  --lavender-surface: #e9e3f8;
+  --periwinkle-surface: #e5e9f9;
+  --ice-surface: #e9f2fb;
+  --blush-surface: #fdf3f6;
 
   /* Text */
   --color-text-primary: #2d1f3d;
@@ -170,8 +188,16 @@
     /* clip-path is set dynamically by the waveClip script in BaseLayout */
   }
 
-  .hero      { z-index: 5; }
-  .tech-band { z-index: 4; }
-  .projects  { z-index: 3; }
-  .contact   { z-index: 2; }
+  .hero {
+    z-index: 5;
+  }
+  .tech-band {
+    z-index: 4;
+  }
+  .projects {
+    z-index: 3;
+  }
+  .contact {
+    z-index: 2;
+  }
 }
