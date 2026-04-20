@@ -25,12 +25,6 @@
   --color-ice: var(--color-ice);
   --color-blush: var(--color-blush);
 
-  --color-on-sakura: var(--color-on-sakura);
-  --color-on-lavender: var(--color-on-lavender);
-  --color-on-periwinkle: var(--color-on-periwinkle);
-  --color-on-ice: var(--color-on-ice);
-  --color-on-blush: var(--color-on-blush);
-
   /* ── Surfaces ─────────────────────────────────────── */
   --color-surface: var(--color-surface);
 
@@ -91,7 +85,7 @@
   /* Text */
   --color-text-primary: #2d1f3d;
   --color-text-secondary: #7a6b9a;
-  --color-text-tertiary: var(--sakura);
+  --color-text-tertiary: color-mix(in hsl, var(--color-sakura) 60%, black 50%);
 
   /* Surfaces */
   --color-surface: #faf7fd;
