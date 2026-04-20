@@ -30,12 +30,12 @@ export const es = {
     label: 'trabajo seleccionado',
     title: 'Proyectos',
     wishin: {
-      period: 'máster · 2024',
+      period: 'máster · 2026',
       description:
         'App de listas de deseos universales. Idea propia, clean architecture, TDD, DDD, CI/CD con GitHub Actions y Expo. Assets diseñados por mí.',
     },
     hctp: {
-      period: 'cliente real · 2025',
+      period: 'cliente real · 2026',
       description:
         'Web oficial llave en mano para banda de metal. Diseño, contenido y desarrollo completos. Animación de logo con Framer Motion, CDN, SEO #1 para "hctp band".',
     },

@@ -88,21 +88,10 @@
   --color-ice: #dceaf9; /* ice blue */
   --color-blush: #fee3ec; /* blush — very soft backgrounds */
 
-  --on-sakura: #a03878;
-  --on-lavender: #5e38a0;
-  --on-periwinkle: #385aa0;
-  --on-ice: #3a4a8a;
-  --on-blush: #a03878;
-
-  --sakura-surface: rgb(254, 232, 245);
-  --lavender-surface: #e9e3f8;
-  --periwinkle-surface: #e5e9f9;
-  --ice-surface: #e9f2fb;
-  --blush-surface: #fdf3f6;
-
   /* Text */
   --color-text-primary: #2d1f3d;
   --color-text-secondary: #7a6b9a;
+  --color-text-tertiary: var(--sakura);
 
   /* Surfaces */
   --color-surface: #faf7fd;
@@ -115,6 +104,7 @@
   /* Section wave transitions — managed in BaseLayout.astro */
   /* --wave-height: 3rem; */
   --section-padding: 5rem;
+  --radius-md: 0.625rem;
   --radius-lg: 1rem;
 
   /* Background Gradient Animation — edit here to change the hero gradient */
@@ -207,11 +197,67 @@
 
   /* ── Palette cycle ───────────────────────────────────────────── */
 
-  .palette-cycle > :nth-child(5n)   { --color: var(--color-lavender); }
-  .palette-cycle > :nth-child(5n+1) { --color: var(--color-sakura); }
-  .palette-cycle > :nth-child(5n+2) { --color: var(--color-periwinkle); }
-  .palette-cycle > :nth-child(5n+3) { --color: var(--color-blush); }
-  .palette-cycle > :nth-child(5n+4) { --color: var(--color-ice); }
+  .palette-cycle > :nth-child(5n) {
+    --color: var(--color-lavender);
+  }
+  .palette-cycle > :nth-child(5n + 1) {
+    --color: var(--color-sakura);
+  }
+  .palette-cycle > :nth-child(5n + 2) {
+    --color: var(--color-periwinkle);
+  }
+  .palette-cycle > :nth-child(5n + 3) {
+    --color: var(--color-blush);
+  }
+  .palette-cycle > :nth-child(5n + 4) {
+    --color: var(--color-ice);
+  }
+
+  /* ── Buttons / CTAs ─────────────────────────────────────────── */
+
+  .btn {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    padding: 0.75rem 1.875rem;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+  }
+
+  .btn--primary {
+    background-color: var(--color-sakura);
+    background-image: linear-gradient(135deg, #c58abf, #b1bef2);
+    color: var(--color-white);
+  }
+
+  .btn--secondary {
+    background-color: var(--color-white);
+    color: var(--color-text-secondary);
+    border: 1.5px solid var(--color-lavender);
+  }
+
+  .btn:hover,
+  .btn:focus-visible {
+    opacity: 0.8;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn {
+      transition: none;
+    }
+  }
+
+  /* ── Section label ──────────────────────────────────────────── */
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color-text-tertiary);
+    margin-bottom: 0.5rem;
+  }
 
   /* ── Pills ───────────────────────────────────────────────────── */
 

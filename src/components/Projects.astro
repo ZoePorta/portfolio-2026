@@ -16,7 +16,7 @@ const t = useTranslations(lang);
 ---
 
 <section class="projects" aria-labelledby="projects-title">
-  <p class="projects__label">{t('projects.label')}</p>
+  <p class="projects__label section-label">{t('projects.label')}</p>
   <h2 id="projects-title">{t('projects.title')}</h2>
 
   <div class="projects__grid">
@@ -40,16 +40,6 @@ const t = useTranslations(lang);
   .projects {
     background-color: var(--color-white);
     container-type: inline-size;
-  }
-
-  .projects__label {
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-text-secondary);
-    text-align: center;
-    margin-bottom: 0.5rem;
   }
 
   .projects h2 {

@@ -38,9 +38,7 @@ const { project, period, description, linkLive, linkRepo } = Astro.props;
               aria-label={`${linkLive} — ${project.title}`}
             >
               {linkLive}
-              <span class="project-card__link-arrow" aria-hidden="true">
-                ↗
-              </span>
+              <span class="ml-1" aria-hidden="true">↗</span>
             </a>
           </li>
         )
@@ -189,18 +187,11 @@ const { project, period, description, linkLive, linkRepo } = Astro.props;
   }
 
   .project-card__link:hover {
-    background-color: color-mix(in srgb, var(--color-sakura) 40%, white);
+    box-shadow: 0 0 5px 2px var(--color);
   }
 
   .project-card__link--repo {
-    --color: var(--color-periwinkle);
+    --color: var(--color-ice);
   }
 
-  .project-card__link--repo:hover {
-    background-color: color-mix(in srgb, var(--color-periwinkle) 40%, white);
-  }
-
-  .project-card__link-arrow {
-    margin-left: 0.25rem;
-  }
 </style>

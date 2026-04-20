@@ -17,15 +17,15 @@
 
 ## 3. Tech stack band
 
-- [ ] Star grid component
-- [ ] Devicons SVG integration
-- [ ] Scroll entrance animation (Motion vanilla)
+- [x] Star grid component
+- [x] Custom SVG integration
+- [x] Scroll entrance animation (Motion vanilla)
 
 ## 4. Projects section
 
-- [ ] Project card component
-- [ ] Cards grid: Wishin, HCTP, Crafty
-- [ ] @container query responsive layout for cards
+- [x] Project card component
+- [x] Cards grid: Wishin, HCTP, Crafty
+- [x] flex responsive layout for cards
 
 ## 5. Contact section
 

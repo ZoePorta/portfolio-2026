@@ -51,11 +51,7 @@ const techs: Tech[] = [
 ---
 
 <section class="tech-band">
-  <h2
-    class="text-xs tracking-widest uppercase font-semibold text-muted text-center"
-  >
-    Tech Stack
-  </h2>
+  <h2 class="section-label">Tech Stack</h2>
 
   <ul class="tech-band__grid palette-cycle" role="list" aria-label="Tech stack">
     {
@@ -87,7 +83,7 @@ const techs: Tech[] = [
     background-color: var(--color-surface);
   }
 
-  /* h2 spacing — visual appearance handled via Tailwind in markup */
+  /* overrides .section-label margin-bottom for extra breathing room */
   .tech-band h2 {
     margin-bottom: 2.5rem;
   }

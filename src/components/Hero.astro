@@ -49,11 +49,11 @@ const { lang } = Astro.props;
       </ul>
 
       <div class="hero__ctas">
-        <a class="hero__cta hero__cta--primary" href="#projects"
+        <a class="btn btn--primary" href="#projects"
           >Ver proyectos</a
         >
         <a
-          class="hero__cta hero__cta--secondary"
+          class="btn btn--secondary"
           href="#"
           target="_blank"
           rel="noopener noreferrer"
@@ -198,32 +198,6 @@ const { lang } = Astro.props;
     margin-bottom: 2rem;
   }
 
-  .hero__cta {
-    font-size: 0.9375rem;
-    font-weight: 600;
-    padding: 0.75rem 1.875rem;
-    border-radius: 999px;
-    text-decoration: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .hero__cta--primary {
-    background-color: var(--color-sakura);
-    background-image: linear-gradient(135deg, #c58abf, #b1bef2);
-    color: var(--color-white);
-  }
-
-  .hero__cta--secondary {
-    background-color: var(--color-white);
-    color: var(--color-text-secondary);
-    border: 1.5px solid var(--color-lavender);
-  }
-
-  .hero__cta:hover,
-  .hero__cta:focus-visible {
-    opacity: 0.8;
-  }
-
   /* ── Social links ────────────────────────────────────────────── */
 
   .hero__social {
@@ -291,7 +265,6 @@ const { lang } = Astro.props;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero__cta,
     .hero__social a {
       transition: none;
     }

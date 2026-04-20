@@ -1,0 +1,261 @@
+---
+import { config } from '../data/config';
+import { useTranslations } from '../i18n/utils';
+import type { Locale } from '../i18n/utils';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+
+const linkedinDisplay = config.linkedin.value.replace('https://www.', '').replace(/\/$/, '');
+const githubDisplay = config.github.value.replace('https://', '');
+---
+
+<section class="contact" aria-labelledby="contact-heading">
+  <div class="contact__card">
+    <p class="contact__label section-label">{t('contact.label')}</p>
+    <h2 class="contact__title" id="contact-heading">{t('contact.title')}</h2>
+
+    <ul class="contact__items" role="list">
+      <li>
+        <a
+          class="contact__item"
+          href={config.linkedin.value}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`LinkedIn — ${linkedinDisplay}`}
+        >
+          <span
+            class="contact__icon"
+            style={`background: ${config.linkedin.backgroundColor}`}
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <path d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.989V9h3.12v1.561h.042c.435-.823 1.496-1.691 3.078-1.691 3.292 0 3.9 2.167 3.9 4.984v6.598zM5.337 7.433a1.81 1.81 0 1 1 0-3.62 1.81 1.81 0 0 1 0 3.62zM6.956 20.452H3.717V9h3.239v11.452z"/>
+            </svg>
+          </span>
+          <span class="contact__item-text">
+            <span class="contact__item-label">{config.linkedin.label}</span>
+            <span class="contact__item-value">{linkedinDisplay}</span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          class="contact__item"
+          href={config.github.value}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`GitHub — ${githubDisplay}`}
+        >
+          <span
+            class="contact__icon"
+            style={`background: ${config.github.backgroundColor}`}
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
+            </svg>
+          </span>
+          <span class="contact__item-text">
+            <span class="contact__item-label">{config.github.label}</span>
+            <span class="contact__item-value">{githubDisplay}</span>
+          </span>
+        </a>
+      </li>
+
+      <li>
+        <a
+          class="contact__item"
+          href={`mailto:${config.email.value}`}
+          aria-label={`Email — ${config.email.value}`}
+        >
+          <span
+            class="contact__icon"
+            style={`background: ${config.email.backgroundColor}`}
+            aria-hidden="true"
+          >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" focusable="false">
+              <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/>
+            </svg>
+          </span>
+          <span class="contact__item-text">
+            <span class="contact__item-label">{config.email.label}</span>
+            <span class="contact__item-value">{config.email.value}</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+
+    <button class="btn btn--primary contact__cta" type="button">
+      {t('contact.cta')}
+    </button>
+  </div>
+</section>
+
+<script>
+  import { animate, inView } from 'motion';
+
+  const card = document.querySelector<HTMLElement>('.contact__card');
+  if (card && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    inView(card, () => {
+      animate(
+        card,
+        { opacity: [0, 1], transform: ['scale(0.96)', 'scale(1)'] },
+        { duration: 0.5, easing: 'ease-out' },
+      );
+    });
+  }
+</script>
+
+<style>
+  /* ── Section ─────────────────────────────────────────────── */
+
+  .contact {
+    --glass-card-bg: rgba(255, 255, 255, 0.68);
+    --glass-item-bg: rgba(255, 255, 255, 0.60);
+    --glass-item-hover: rgba(255, 255, 255, 0.88);
+    --glass-border: rgba(255, 255, 255, 0.92);
+
+    min-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: url('/images/contact-flowers.webp') center / cover no-repeat;
+    padding-block: var(--section-padding);
+    padding-inline: 1.5rem;
+  }
+
+  /* ── Card ───────────────────────────────────────────────── */
+
+  .contact__card {
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem 3rem;
+    background: var(--glass-card-bg);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    border: 0.5px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 8px 32px color-mix(in srgb, var(--color-sakura) 20%, transparent);
+  }
+
+  /* ── Title ──────────────────────────────────────────────── */
+
+  .contact__title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 1.75rem;
+  }
+
+  /* ── Contact items ──────────────────────────────────────── */
+
+  .contact__items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .contact__item {
+    display: flex;
+    align-items: center;
+    gap: 0.875rem;
+    padding: 0.75rem 1rem;
+    background: var(--glass-item-bg);
+    border: 0.5px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    text-decoration: none;
+    transition:
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .contact__item:hover {
+    background: var(--glass-item-hover);
+    box-shadow: 0 2px 12px color-mix(in srgb, var(--color-sakura) 22%, transparent);
+  }
+
+  .contact__item:focus-visible {
+    background: var(--glass-item-hover);
+    outline: 2px solid var(--color-sakura);
+    outline-offset: 2px;
+  }
+
+  /* ── Icon ───────────────────────────────────────────────── */
+
+  .contact__icon {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+  }
+
+  .contact__icon svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-white);
+  }
+
+  /* ── Item text ──────────────────────────────────────────── */
+
+  .contact__item-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+  }
+
+  .contact__item-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-transform: capitalize;
+  }
+
+  .contact__item-value {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+
+  /* ── CTA ────────────────────────────────────────────────── */
+
+  .contact__cta {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+  }
+
+  /* ── Motion: initial hidden state ───────────────────────── */
+
+  @media (prefers-reduced-motion: no-preference) {
+    .contact__card {
+      opacity: 0;
+    }
+  }
+
+  /* ── Reduced motion ─────────────────────────────────────── */
+
+  @media (prefers-reduced-motion: reduce) {
+    .contact__item {
+      transition: none;
+    }
+  }
+
+  /* ── Mobile ─────────────────────────────────────────────── */
+
+  @media (max-width: 480px) {
+    .contact__card {
+      padding: 2rem 1.5rem;
+    }
+  }
+</style>
