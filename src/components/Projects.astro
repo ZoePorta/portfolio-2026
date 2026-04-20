@@ -1,0 +1,69 @@
+---
+import { projects } from '../data/projects.ts';
+import {
+  useTranslations,
+  type Locale,
+  type TranslationKey,
+} from '../i18n/utils';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  lang: Locale;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<section class="projects" aria-labelledby="projects-title">
+  <p class="projects__label">{t('projects.label')}</p>
+  <h2 id="projects-title">{t('projects.title')}</h2>
+
+  <div class="projects__grid">
+    {
+      projects.map((project) => (
+        <ProjectCard
+          project={project}
+          period={t(`projects.${project.id}.period` as TranslationKey)}
+          description={t(
+            `projects.${project.id}.description` as TranslationKey,
+          )}
+          linkLive={t('projects.link_live')}
+          linkRepo={t('projects.link_repo')}
+        />
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .projects {
+    background-color: var(--color-white);
+    container-type: inline-size;
+  }
+
+  .projects__label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .projects h2 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .projects__grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    padding-inline: 10%;
+  }
+</style>

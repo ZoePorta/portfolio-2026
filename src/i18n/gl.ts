@@ -1,6 +1,57 @@
-export default {
-  'meta.siteTitle': 'Zoe Porta — Frontend Developer',
-  'nav.about': 'sobre min',
-  'nav.projects': 'proxectos',
-  'nav.contact': 'contacto',
+export const gl = {
+  // Metadata
+  site: {
+    title: 'Zoe Porta — Frontend Developer',
+    description: 'Portfolio de Zoe Porta, desenvolvedora frontend.',
+  },
+
+  // Navigation
+  nav: {
+    about: 'sobre min',
+    projects: 'proxectos',
+    contact: 'contacto',
+  },
+
+  // Hero
+  hero: {
+    role: 'Frontend Developer · Creative Coder',
+    subtitle: 'TBD', // ⚠️ placeholder
+    cta_projects: 'Ver proxectos',
+    cta_cv: 'Consulta o meu CV',
+  },
+
+  // Tech band
+  tech: {
+    label: 'tech stack',
+  },
+
+  // Projects
+  projects: {
+    label: 'traballo seleccionado',
+    title: 'Proxectos',
+    wishin: {
+      period: 'máster · 2024',
+      description:
+        'App de listas de desexos universais. Idea propia, clean architecture, TDD, DDD, CI/CD con GitHub Actions e Expo. Assets deseñados por min.',
+    },
+    hctp: {
+      period: 'cliente real · 2025',
+      description:
+        'Web oficial llave en man para banda de metal. Deseño, contido e desenvolvemento completos. Animación de logo con Framer Motion, CDN, SEO #1 para "hctp band".',
+    },
+    crafty: {
+      period: 'bootcamp · 2020',
+      description:
+        'Marketplace fullstack completo: deseño, base de datos MySQL, API REST con Express e frontend Vue. Proxecto legacy — código visible en GitHub.',
+    },
+    link_live: 'Ver web',
+    link_repo: 'GitHub',
+  },
+
+  // Contact
+  contact: {
+    label: 'falamos?',
+    title: 'Contacto',
+    cta: 'Enviar mensaxe',
+  },
 } as const;
