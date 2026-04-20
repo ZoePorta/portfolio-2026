@@ -31,6 +31,7 @@
   /* ── Text (aliased to avoid text-text-primary names) ─ */
   --color-foreground: var(--color-text-primary);
   --color-muted: var(--color-text-secondary);
+  --color-accent: var(--color-text-tertiary);
   /* ── Typography ───────────────────────────────────── */
   --font-display: var(--font-display);
   --font-body: var(--font-body);
@@ -85,7 +86,7 @@
   /* Text */
   --color-text-primary: #2d1f3d;
   --color-text-secondary: #7a6b9a;
-  --color-text-tertiary: color-mix(in hsl, var(--color-sakura) 60%, black 50%);
+  --color-text-tertiary: color-mix(in hsl, var(--color-sakura) 70%, black 40%);
 
   /* Surfaces */
   --color-surface: #faf7fd;

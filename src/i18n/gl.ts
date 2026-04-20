@@ -54,4 +54,9 @@ export const gl = {
     title: 'Contacto',
     cta: 'Enviar mensaxe',
   },
+
+  // Footer
+  footer: {
+    credit: 'feito con xeito por',
+  },
 } as const;

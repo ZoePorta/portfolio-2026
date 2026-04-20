@@ -54,6 +54,11 @@ export const es = {
     title: 'Contacto',
     cta: 'Enviar mensaje',
   },
+
+  // Footer
+  footer: {
+    credit: 'crafted with care by',
+  },
 } as const;
 
 export type TranslationKey = keyof typeof es;

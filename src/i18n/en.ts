@@ -54,4 +54,9 @@ export const en = {
     title: 'Contact',
     cta: 'Send message',
   },
+
+  // Footer
+  footer: {
+    credit: 'crafted with care by',
+  },
 } as const;
