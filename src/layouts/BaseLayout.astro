@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
 import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
 import type { Locale } from '../i18n/utils';
 
 interface Props {
@@ -34,7 +35,7 @@ const WAVE_PX = 48; // Source of truth for --wave-height
     <main>
       <slot />
     </main>
-    <footer></footer>
+    <Footer lang={lang} />
     <script define:vars={{ WAVE_PX }}>
       /**
        * Per-section wave profiles.

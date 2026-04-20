@@ -15,7 +15,8 @@ export const en = {
   // Hero
   hero: {
     role: 'Frontend Developer · Creative Coder',
-    subtitle: 'TBD', // ⚠️ placeholder
+    tagline: 'The craft is in the details',
+    subtitle: 'Frontend developer. I build things that are as solid underneath as they are beautiful on the surface.',
     cta_projects: 'See projects',
     cta_cv: 'View my CV',
   },

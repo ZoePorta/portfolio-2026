@@ -1,7 +1,8 @@
 ---
 import { Image } from 'astro:assets';
 import fotoZoe from '../assets/images/fotoZoe.png';
-import type { Locale } from '../i18n/utils';
+import { useTranslations, type Locale } from '../i18n/utils';
+import { config } from '../data/config';
 import { BackgroundGradientAnimation } from './react/BackgroundGradientAnimation';
 
 interface Props {
@@ -9,6 +10,7 @@ interface Props {
 }
 
 const { lang } = Astro.props;
+const t = useTranslations(lang);
 ---
 
 <section class="hero" aria-labelledby="hero-tagline">
@@ -29,16 +31,18 @@ const { lang } = Astro.props;
     <!-- Right column: text -->
     <div class="hero__text-col">
       <h1 id="hero-tagline" class="hero__tagline">
-        The craft is in the details
+        {t('hero.tagline')}
       </h1>
 
-      {/* TODO: replace with real subtitle copy */}
       <p class="hero__subtitle">
-        Frontend developer. I build things that are as solid underneath as they
-        are beautiful on the surface.
+        {t('hero.subtitle')}
       </p>
 
-      <ul class="hero__skills palette-cycle" aria-label="Skills and strengths" role="list">
+      <ul
+        class="hero__skills palette-cycle"
+        aria-label="Skills and strengths"
+        role="list"
+      >
         <li class="pill">Lateral thinking</li>
         <li class="pill">Makes complexity feel simple</li>
         <li class="pill">Informal tech lead</li>
@@ -48,59 +52,60 @@ const { lang } = Astro.props;
         <li class="pill">SVG vectorization</li>
       </ul>
 
-      <div class="hero__ctas">
-        <a class="btn btn--primary" href="#projects"
-          >Ver proyectos</a
-        >
-        <a
-          class="btn btn--secondary"
-          href="#"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Consulta mi CV
-        </a>
-      </div>
-
-      <ul class="hero__social" role="list" aria-label="Social links">
-        <li>
+      <footer class="hero__bottom">
+        <div class="hero__ctas">
+          <a class="btn btn--primary" href="#projects"
+            >{t('hero.cta_projects')}</a
+          >
           <a
-            href="https://linkedin.com/in/zoeporta"
+            class="btn btn--secondary"
+            href={config.cvUrl.value}
             target="_blank"
             rel="noopener noreferrer"
-            aria-label="LinkedIn"
           >
-            <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              focusable="false"
+            {t('hero.cta_cv')}
+          </a>
+        </div>
+
+        <ul class="hero__social" role="list" aria-label="Social links">
+          <li>
+            <a
+              href={config.linkedin.value}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
             >
-              <path
-                d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037
                      -1.853 0-2.136 1.445-2.136 2.939v5.667H9.989V9h3.12v1.561h.042
                      c.435-.823 1.496-1.691 3.078-1.691 3.292 0 3.9 2.167 3.9 4.984v6.598z
                      M5.337 7.433a1.81 1.81 0 1 1 0-3.62 1.81 1.81 0 0 1 0 3.62z
                      M6.956 20.452H3.717V9h3.239v11.452z"
-              ></path>
-            </svg>
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/ZoePorta"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              aria-hidden="true"
-              focusable="false"
+                ></path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a
+              href={config.github.value}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
             >
-              <path
-                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385
+              <svg
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                focusable="false"
+              >
+                <path
+                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385
                      .6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04
                      -3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755
                      -1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236
@@ -113,11 +118,12 @@ const { lang } = Astro.props;
                      .42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286
                      0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297
                      c0-6.627-5.373-12-12-12"
-              ></path>
-            </svg>
-          </a>
-        </li>
-      </ul>
+                ></path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </footer>
     </div>
   </BackgroundGradientAnimation>
 </section>
@@ -189,13 +195,20 @@ const { lang } = Astro.props;
     margin-bottom: 2.5rem;
   }
 
-  /* ── CTAs ────────────────────────────────────────────────────── */
+  /* ── CTAs + Social ──────────────────────────────────────────── */
+
+  .hero__bottom {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
 
   .hero__ctas {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
   }
 
   /* ── Social links ────────────────────────────────────────────── */
@@ -255,11 +268,10 @@ const { lang } = Astro.props;
       justify-content: center;
     }
 
-    .hero__ctas {
+    .hero__bottom {
       justify-content: center;
     }
-
-    .hero__social {
+    .hero__ctas {
       justify-content: center;
     }
   }
