@@ -38,14 +38,14 @@ const { lang } = Astro.props;
         are beautiful on the surface.
       </p>
 
-      <ul class="hero__skills" aria-label="Skills and strengths" role="list">
-        <li>Lateral thinking</li>
-        <li>Makes complexity feel simple</li>
-        <li>Informal tech lead</li>
-        <li>Owns the design</li>
-        <li>Documents for the next dev</li>
-        <li>AI image generation</li>
-        <li>SVG vectorization</li>
+      <ul class="hero__skills palette-cycle" aria-label="Skills and strengths" role="list">
+        <li class="pill">Lateral thinking</li>
+        <li class="pill">Makes complexity feel simple</li>
+        <li class="pill">Informal tech lead</li>
+        <li class="pill">Owns the design</li>
+        <li class="pill">Documents for the next dev</li>
+        <li class="pill">AI image generation</li>
+        <li class="pill">SVG vectorization</li>
       </ul>
 
       <div class="hero__ctas">
@@ -187,40 +187,6 @@ const { lang } = Astro.props;
     gap: 0.5rem;
     list-style: none;
     margin-bottom: 2.5rem;
-  }
-
-  .hero__skills li {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    padding: 0.375rem 0.9rem;
-    border-radius: 999px;
-    background-color: var(--ice-surface);
-    color: var(--on-ice);
-    border: 1px solid var(--color-ice);
-  }
-
-  .hero__skills li:nth-child(5n) {
-    background-color: var(--lavender-surface);
-    color: var(--on-lavender);
-    border-color: var(--color-lavender);
-  }
-
-  .hero__skills li:nth-child(5n + 1) {
-    background-color: var(--sakura-surface);
-    color: var(--on-sakura);
-    border-color: var(--color-sakura);
-  }
-
-  .hero__skills li:nth-child(5n + 2) {
-    background-color: var(--periwinkle-surface);
-    color: var(--on-periwinkle);
-    border-color: var(--color-periwinkle);
-  }
-
-  .hero__skills li:nth-child(5n + 3) {
-    background-color: var(--blush-surface);
-    color: var(--on-blush);
-    border-color: var(--color-blush);
   }
 
   /* ── CTAs ────────────────────────────────────────────────────── */

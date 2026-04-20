@@ -203,4 +203,25 @@
   .contact {
     z-index: 2;
   }
+
+  /* ── Palette cycle ───────────────────────────────────────────── */
+
+  .palette-cycle > :nth-child(5n)   { --color: var(--color-lavender); }
+  .palette-cycle > :nth-child(5n+1) { --color: var(--color-sakura); }
+  .palette-cycle > :nth-child(5n+2) { --color: var(--color-periwinkle); }
+  .palette-cycle > :nth-child(5n+3) { --color: var(--color-blush); }
+  .palette-cycle > :nth-child(5n+4) { --color: var(--color-ice); }
+
+  /* ── Pills ───────────────────────────────────────────────────── */
+
+  .pill {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 0.375rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid;
+    background-color: color-mix(in srgb, var(--color) 40%, white);
+    color: color-mix(in hsl, var(--color) 60%, black 50%);
+    border-color: var(--color);
+  }
 }

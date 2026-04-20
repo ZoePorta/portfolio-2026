@@ -57,7 +57,7 @@ const techs: Tech[] = [
     Tech Stack
   </h2>
 
-  <ul class="tech-band__grid" role="list" aria-label="Tech stack">
+  <ul class="tech-band__grid palette-cycle" role="list" aria-label="Tech stack">
     {
       techs.map((tech) => (
         <li class="tech-item">
@@ -105,38 +105,6 @@ const techs: Tech[] = [
     padding-inline: 2rem;
   }
 
-  /* ── Item color tokens ───────────────────────────────────────── */
-
-  .tech-item {
-    --item-surface: var(--ice-surface);
-    --item-color: var(--color-ice);
-    --item-on: var(--on-ice);
-  }
-
-  .tech-item:nth-child(5n) {
-    --item-surface: var(--lavender-surface);
-    --item-color: var(--color-lavender);
-    --item-on: var(--on-lavender);
-  }
-
-  .tech-item:nth-child(5n + 1) {
-    --item-surface: var(--sakura-surface);
-    --item-color: var(--color-sakura);
-    --item-on: var(--on-sakura);
-  }
-
-  .tech-item:nth-child(5n + 2) {
-    --item-surface: var(--periwinkle-surface);
-    --item-color: var(--color-periwinkle);
-    --item-on: var(--on-periwinkle);
-  }
-
-  .tech-item:nth-child(5n + 3) {
-    --item-surface: var(--blush-surface);
-    --item-color: var(--color-blush);
-    --item-on: var(--on-blush);
-  }
-
   /* ── Figure: star and abbr overlap in the same grid cell ─────── */
 
   .tech-item__figure {
@@ -155,8 +123,8 @@ const techs: Tech[] = [
   }
 
   .tech-item__star path {
-    fill: var(--item-surface);
-    stroke: var(--item-color);
+    fill: color-mix(in srgb, var(--color) 40%, white);
+    stroke: var(--color);
     stroke-width: 1.5;
   }
 
@@ -167,7 +135,7 @@ const techs: Tech[] = [
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--item-on);
+    color: color-mix(in hsl, var(--color) 60%, black 50%);
     z-index: 1;
   }
 
