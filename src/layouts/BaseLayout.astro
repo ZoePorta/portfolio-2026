@@ -42,7 +42,7 @@ const WAVE_PX = 48; // Source of truth for --wave-height
       <slot />
     </main>
     <Footer lang={lang} />
-    <script define:vars={{ WAVE_PX }}>
+    <script is:inline define:vars={{ WAVE_PX }}>
       /**
        * Per-section wave profiles.
        * Each function returns the cubic-bezier segments that run from (W, H) → (0, H).
@@ -93,7 +93,7 @@ const WAVE_PX = 48; // Source of truth for --wave-height
         entries.forEach((e) => setWave(e.target)),
       );
 
-      document.querySelectorAll('section:not(:last-of-type)').forEach((el) => {
+      document.querySelectorAll('.wave-wrap > section').forEach((el) => {
         ro.observe(el);
         setWave(el);
       });

@@ -131,9 +131,10 @@ const t = useTranslations(lang);
 <style>
   /* ── Layout ──────────────────────────────────────────────────── */
 
-  /* 
-   * Added the padding to .hero__content instead of .hero so it covers the background  * gradient animation
-  */
+  /*
+   * hero__content (inside BackgroundGradientAnimation) handles the wave-bottom
+   * clearance internally so the gradient covers the full wave area.
+   */
   .hero {
     padding-bottom: 0;
   }

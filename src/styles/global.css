@@ -166,27 +166,44 @@
 @layer components {
   /* ── Section wave system ─────────────────────────────────────────── */
 
-  section:not(:last-of-type) {
+  /*
+   * .wave-wrap wraps each wave section. filter here casts the drop-shadow following
+   * the wave outline without being clipped — clip-path lives on the section inside.
+   * position + z-index needed because filter creates a stacking context per wrapper.
+   */
+  .wave-wrap {
     position: relative;
-    padding-bottom: calc(var(--wave-height) + var(--section-padding));
     margin-bottom: calc(var(--wave-height) * -1);
-    /* clip-path is set dynamically by the waveClip script in BaseLayout */
+    filter: drop-shadow(
+      0 6px 18px color-mix(in srgb, var(--color-lavender) 50%, transparent)
+    );
   }
 
-  section:not(:first-of-type) {
+  /* clip-path applied dynamically by the waveClip script in BaseLayout */
+  .wave-wrap > section {
+    position: relative;
+    padding-bottom: calc(var(--wave-height) + var(--section-padding));
+  }
+
+  /* Non-first wave sections need top clearance for the wave above */
+  /* Contact (bare section after shadow wrappers) needs the same top clearance */
+  .wave-wrap ~ .wave-wrap > section,
+  .wave-wrap ~ section {
     padding-top: calc(var(--wave-height) + var(--section-padding));
   }
 
-  .hero {
+  /* Stacking order — filter creates a stacking context per .wave-wrap, z-index goes here */
+  .wave-wrap:has(> .hero) {
     z-index: 5;
   }
-  .tech-band {
+  .wave-wrap:has(> .tech-band) {
     z-index: 4;
   }
-  .projects {
+  .wave-wrap:has(> .projects) {
     z-index: 3;
   }
   .contact {
+    position: relative;
     z-index: 2;
   }
 

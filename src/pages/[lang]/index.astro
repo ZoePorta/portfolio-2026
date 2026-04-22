@@ -19,8 +19,8 @@ const t = useTranslations(lang);
 ---
 
 <BaseLayout title={t('site.title')} lang={lang}>
-  <Hero lang={lang} />
-  <TechBand />
-  <Projects lang={lang} />
+  <div class="wave-wrap"><Hero lang={lang} /></div>
+  <div class="wave-wrap"><TechBand /></div>
+  <div class="wave-wrap"><Projects lang={lang} /></div>
   <Contact lang={lang} />
 </BaseLayout>
