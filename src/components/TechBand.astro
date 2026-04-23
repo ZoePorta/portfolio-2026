@@ -60,12 +60,12 @@ const techs: Tech[] = [
           <figure class="tech-item__figure">
             <svg
               class="tech-item__star"
-              viewBox="0 0 100 100"
+              viewBox="0 0 52 52"
               xmlns="http://www.w3.org/2000/svg"
               aria-hidden="true"
               focusable="false"
             >
-              <path d="M50,2 Q47,47 2,50 Q47,53 50,98 Q53,53 98,50 Q53,47 50,2Z" />
+              <path d="M26 2 L29 21 L48 26 L29 31 L26 50 L23 31 L4 26 L23 21 Z" />
             </svg>
             <span class="tech-icon" aria-hidden="true" set:html={tech.icon} />
             <figcaption class="tech-item__name">{tech.name}</figcaption>
@@ -122,7 +122,7 @@ const techs: Tech[] = [
   .tech-item__star path {
     fill: color-mix(in srgb, var(--color) 40%, white);
     stroke: var(--color);
-    stroke-width: 1.5;
+    stroke-width: 0.8;
   }
 
   .tech-icon {
