@@ -8,6 +8,7 @@ export const es = {
   // Navigation
   nav: {
     about: 'sobre mí',
+    stack: 'stack',
     projects: 'proyectos',
     contact: 'contacto',
   },

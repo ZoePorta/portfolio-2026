@@ -15,9 +15,9 @@ const { lang } = Astro.props;
 const t = useTranslations(lang);
 ---
 
-<section class="projects" aria-labelledby="projects-title">
+<section class="projects" aria-labelledby="projects">
   <p class="projects__label section-label">{t('projects.label')}</p>
-  <h2 id="projects-title">{t('projects.title')}</h2>
+  <h2 id="projects">{t('projects.title')}</h2>
 
   <div class="projects__grid">
     {

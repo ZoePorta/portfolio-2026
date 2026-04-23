@@ -8,6 +8,7 @@ export const gl = {
   // Navigation
   nav: {
     about: 'sobre min',
+    stack: 'stack',
     projects: 'proxectos',
     contact: 'contacto',
   },

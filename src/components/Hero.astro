@@ -14,7 +14,7 @@ const t = useTranslations(lang);
 const { hero } = getDict(lang);
 ---
 
-<section class="hero" aria-labelledby="hero-tagline">
+<section id="about" aria-labelledby="hero-tagline">
   <BackgroundGradientAnimation client:load className="hero__content">
     <!-- Left column: photo -->
     <div class="hero__photo-col">
@@ -132,7 +132,7 @@ const { hero } = getDict(lang);
    * hero__content (inside BackgroundGradientAnimation) handles the wave-bottom
    * clearance internally so the gradient covers the full wave area.
    */
-  .hero {
+  #about {
     padding-bottom: 0;
   }
 

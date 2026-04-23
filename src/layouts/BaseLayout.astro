@@ -43,11 +43,25 @@ const WAVE_PX = 48; // Source of truth for --wave-height
     </main>
     <Footer lang={lang} />
     <script>
+      const header = document.querySelector('header');
+      if (header) {
+        const setHeaderHeight = () =>
+          document.documentElement.style.setProperty(
+            '--header-height',
+            `${header.offsetHeight}px`,
+          );
+        setHeaderHeight();
+        new ResizeObserver(setHeaderHeight).observe(header);
+      }
+    </script>
+    <script>
       import { scroll, animate } from 'motion';
 
+      const header = document.querySelector<HTMLElement>('header');
+      const waveWraps = document.querySelectorAll<HTMLElement>('.wave-wrap');
+      const rates = [0.75, 0.2, 0];
+
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        const waveWraps = document.querySelectorAll<HTMLElement>('.wave-wrap');
-        const rates = [0.75, 0.2, 0];
         const maxScroll =
           document.documentElement.scrollHeight - window.innerHeight;
 
@@ -55,6 +69,40 @@ const WAVE_PX = 48; // Source of truth for --wave-height
           if (rates[i] === undefined) return;
           scroll(animate(el, { y: [0, -maxScroll * rates[i]] }));
         });
+
+        // The browser uses layout position (ignoring CSS transforms) for anchor
+        // navigation, but the parallax applies translateY(-rate*S) to each
+        // wave-wrap, shifting visual position by (rate*S) from the layout
+        // position. We intercept anchor clicks and solve for the scroll target
+        // where the target element's visual top lands exactly below the navbar:
+        //   S_target = V/(1+rate) + S - navHeight/(1+rate)
+        // Rate is derived from the target's closest .wave-wrap ancestor.
+        const getRate = (el: Element) => {
+          const wrap = el.closest('.wave-wrap');
+          if (!wrap) return 0;
+          const idx = Array.from(waveWraps).indexOf(wrap as HTMLElement);
+          return rates[idx] ?? 0;
+        };
+
+        document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach(
+          (link) => {
+            link.addEventListener('click', (e) => {
+              const hash = link.getAttribute('href')!.slice(1);
+              const target = document.getElementById(hash);
+              if (!target) return;
+
+              e.preventDefault();
+
+              const rate = getRate(target);
+              const S = window.scrollY;
+              const V = target.getBoundingClientRect().top;
+              const navHeight = header?.offsetHeight ?? 60;
+              const S_f = V / (1 + rate) + S - navHeight / (1 + rate);
+
+              window.scrollTo({ top: Math.max(0, S_f), behavior: 'smooth' });
+            });
+          },
+        );
       }
     </script>
     <script is:inline define:vars={{ WAVE_PX }}>
@@ -71,7 +119,7 @@ const WAVE_PX = 48; // Source of truth for --wave-height
        */
       const waveProfiles = {
         // 2 humps — peak ~60%, soft valley ~36%, second peak near left edge
-        hero: (W, H, a) =>
+        about: (W, H, a) =>
           `C${W * 0.85},${H - a * 0.04} ${W * 0.7},${H - a * 0.88} ${W * 0.6},${H - a * 0.82}` +
           ` S${W * 0.4},${H - a * 0.06} ${W * 0.36},${H - a * 0.08}` +
           ` S${W * 0.16},${H - a * 0.86} 0,${H - a * 0.3}`,
@@ -95,7 +143,7 @@ const WAVE_PX = 48; // Source of truth for --wave-height
         const H = el.offsetHeight;
         const a = WAVE_PX;
         const key = Object.keys(waveProfiles).find((k) =>
-          el.classList.contains(k),
+          el.id === k || el.classList.contains(k),
         );
         const segs = key
           ? waveProfiles[key](W, H, a)

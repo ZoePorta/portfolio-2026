@@ -149,6 +149,10 @@
 /* ─── Base ───────────────────────────────────────────────────────────────── */
 
 @layer base {
+  html {
+    scroll-padding-top: var(--header-height, 3.75rem);
+  }
+
   body {
     font-family: var(--font-body);
     color: var(--color-text-primary);
@@ -200,7 +204,7 @@
   }
 
   /* Stacking order — filter creates a stacking context per .wave-wrap, z-index goes here */
-  .wave-wrap:has(> .hero) {
+  .wave-wrap:has(> #about) {
     z-index: 5;
   }
   .wave-wrap:has(> .tech-band) {
