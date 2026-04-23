@@ -29,8 +29,8 @@
 
 ## 5. Contact section
 
-- [ ] Parallax floral background
-- [ ] Glassmorphism card
+- [x] Parallax floral background
+- [x] Glassmorphism card
 - [ ] Netlify Forms integration
 
 ## 6. Polish & launch
@@ -39,6 +39,6 @@
 - [ ] prefers-reduced-motion pass
 - [ ] Accessibility audit
 - [ ] Lighthouse audit
-- [ ] All copy in ES/EN/GL
-- [ ] Tagline final review
+- [x] All copy in ES/EN/GL
+- [x] Tagline final review
 - [ ] Deploy to zoecodes.me
