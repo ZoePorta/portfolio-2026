@@ -1,4 +1,18 @@
 ---
-// Redirect root to default locale. Browser language detection is a future task.
-return Astro.redirect('/es/', 301);
+// In production, Netlify _redirects handles language detection at the CDN level.
+// This page only runs in local dev.
 ---
+<html>
+  <head>
+    <script is:inline>
+      (function () {
+        var raw = (navigator.languages && navigator.languages[0]) || navigator.language || 'es';
+        var code = raw.toLowerCase().split('-')[0];
+        var supported = { es: '/es/', en: '/en/', gl: '/gl/' };
+        window.location.replace(supported[code] || '/es/');
+      })();
+    </script>
+    <noscript><meta http-equiv="refresh" content="0; url=/es/" /></noscript>
+  </head>
+  <body></body>
+</html>
