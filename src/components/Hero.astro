@@ -31,8 +31,12 @@ const { hero } = getDict(lang);
 
     <!-- Right column: text -->
     <div class="hero__text-col">
+      <p class="hero__role section-label text-white text-left">
+        {t('hero.role')}
+      </p>
       <h1 id="hero-tagline" class="hero__tagline">
         {t('hero.tagline')}
+        <span class="text-accent">Zoe</span>
       </h1>
 
       <p class="hero__subtitle">
@@ -44,9 +48,7 @@ const { hero } = getDict(lang);
         aria-label="Skills and strengths"
         role="list"
       >
-        {hero.skills.map((skill) => (
-          <li class="pill">{skill}</li>
-        ))}
+        {hero.skills.map((skill) => <li class="pill">{skill}</li>)}
       </ul>
 
       <footer class="hero__bottom">
@@ -168,12 +170,16 @@ const { hero } = getDict(lang);
 
   /* ── Text column ─────────────────────────────────────────────── */
 
+  .hero__role {
+    text-shadow: 0 0 6px var(--color-periwinkle);
+  }
   .hero__tagline {
     font-family: var(--font-display);
     font-size: clamp(2.5rem, 4.5vw, 4.5rem);
     line-height: 1.1;
     color: var(--color-text-primary);
     margin-bottom: 1.25rem;
+    margin-top: 1.25rem;
   }
 
   .hero__subtitle {
