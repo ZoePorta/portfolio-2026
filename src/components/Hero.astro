@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import fotoZoe from '../assets/images/fotoZoe.png';
-import { useTranslations, type Locale } from '../i18n/utils';
+import { useTranslations, getDict, type Locale } from '../i18n/utils';
 import { config } from '../data/config';
 import { BackgroundGradientAnimation } from './react/BackgroundGradientAnimation';
 
@@ -11,6 +11,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const t = useTranslations(lang);
+const { hero } = getDict(lang);
 ---
 
 <section class="hero" aria-labelledby="hero-tagline">
@@ -43,13 +44,9 @@ const t = useTranslations(lang);
         aria-label="Skills and strengths"
         role="list"
       >
-        <li class="pill">Lateral thinking</li>
-        <li class="pill">Makes complexity feel simple</li>
-        <li class="pill">Informal tech lead</li>
-        <li class="pill">Owns the design</li>
-        <li class="pill">Documents for the next dev</li>
-        <li class="pill">AI image generation</li>
-        <li class="pill">SVG vectorization</li>
+        {hero.skills.map((skill) => (
+          <li class="pill">{skill}</li>
+        ))}
       </ul>
 
       <footer class="hero__bottom">

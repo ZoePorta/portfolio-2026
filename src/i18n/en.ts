@@ -16,9 +16,22 @@ export const en = {
   hero: {
     role: 'Frontend Developer · Creative Coder',
     tagline: 'The craft is in the details',
-    subtitle: 'Frontend developer. I build things that are as solid underneath as they are beautiful on the surface.',
+    subtitle:
+      'Frontend developer. I build things that are as solid underneath as they are beautiful on the surface.',
     cta_projects: 'See projects',
     cta_cv: 'View my CV',
+    skills: [
+      'Lateral thinking',
+      'Multipotential',
+      'Makes complexity feel simple',
+      'Informal tech lead',
+      'Owns the design',
+      'Documents for the next dev',
+      'AI image generation',
+      'SVG vectorization',
+      'TDD',
+      'CI/CD',
+    ],
   },
 
   // Tech band

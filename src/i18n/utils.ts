@@ -18,6 +18,10 @@ export type TranslationKey = LeafKeys<Translations>;
 
 const dicts = { es, en, gl } as Record<Locale, Translations>;
 
+export function getDict(lang: Locale): Translations {
+  return dicts[lang];
+}
+
 export function useTranslations(lang: Locale) {
   function resolve(dict: Translations, key: TranslationKey): string | undefined {
     const parts = key.split('.');
