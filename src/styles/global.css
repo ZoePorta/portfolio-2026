@@ -98,7 +98,7 @@
 
   /* Section wave transitions — managed in BaseLayout.astro */
   /* --wave-height: 3rem; */
-  --section-overlap: -200px;
+  --section-overlap: 200px;
   --section-padding: 5rem;
   --radius-md: 0.625rem;
   --radius-lg: 1rem;
@@ -180,6 +180,10 @@
     );
   }
 
+  .wave-wrap:not(:first-child) {
+    margin-top: calc(var(--section-overlap) * -2);
+  }
+
   /* clip-path applied dynamically by the waveClip script in BaseLayout */
   .wave-wrap > section {
     position: relative;
@@ -190,7 +194,9 @@
   /* Contact (bare section after shadow wrappers) needs the same top clearance */
   .wave-wrap ~ .wave-wrap > section,
   .wave-wrap ~ section {
-    padding-top: calc(var(--wave-height) + var(--section-padding));
+    padding-top: calc(
+      var(--wave-height) + var(--section-padding) + var(--section-overlap)
+    );
   }
 
   /* Stacking order — filter creates a stacking context per .wave-wrap, z-index goes here */
@@ -199,11 +205,9 @@
   }
   .wave-wrap:has(> .tech-band) {
     z-index: 4;
-    margin-top: var(--section-overlap);
   }
   .wave-wrap:has(> .projects) {
     z-index: 3;
-    margin-top: var(--section-overlap);
   }
   .contact {
     position: relative;
