@@ -167,36 +167,21 @@ const techs: Tech[] = [
 </style>
 
 <script>
-  import { scroll } from 'motion';
+  import { scroll, animate, stagger } from 'motion';
 
   const prefersReducedMotion = window.matchMedia(
     '(prefers-reduced-motion: reduce)',
   ).matches;
 
   if (!prefersReducedMotion) {
-    const section = document.querySelector<HTMLElement>('.tech-band')!;
-    const items = [...document.querySelectorAll<HTMLElement>('.tech-item')];
-    const n = items.length;
-
-    items.forEach((item) => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateY(12px)';
+    document.querySelectorAll<HTMLElement>('.tech-item').forEach((item, i) => {
+      scroll(
+        animate(item, { opacity: [0, 1], filter: ['blur(10px)', 'blur(0px)'] }),
+        {
+          target: item,
+          offset: ['start 95vh', 'start 80vh'],
+        },
+      );
     });
-
-    scroll(
-      (p: number) => {
-        items.forEach((item, i) => {
-          const sliceStart = (i / n) * 0.2 + 0.2;
-          const sliceEnd = 0.2;
-          const t = Math.max(0, Math.min(1, (p - sliceStart) / sliceEnd));
-          item.style.opacity = String(t);
-          item.style.filter = `blur(${(t - 0.8) * -10}px)`;
-        });
-      },
-      {
-        target: section,
-        offset: ['start end', 'end start'],
-      },
-    );
   }
 </script>
