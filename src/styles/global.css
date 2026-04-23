@@ -98,6 +98,7 @@
 
   /* Section wave transitions — managed in BaseLayout.astro */
   /* --wave-height: 3rem; */
+  --section-overlap: -200px;
   --section-padding: 5rem;
   --radius-md: 0.625rem;
   --radius-lg: 1rem;
@@ -198,9 +199,11 @@
   }
   .wave-wrap:has(> .tech-band) {
     z-index: 4;
+    margin-top: var(--section-overlap);
   }
   .wave-wrap:has(> .projects) {
     z-index: 3;
+    margin-top: var(--section-overlap);
   }
   .contact {
     position: relative;
