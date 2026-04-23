@@ -186,15 +186,11 @@ const techs: Tech[] = [
     scroll(
       (p: number) => {
         items.forEach((item, i) => {
-          // Spread items across the first 60% of the scroll range so all are
-          // fully visible by the time the section is completely in the viewport.
-          // Each item fades over a 7% window of scroll progress.
           const sliceStart = (i / n) * 0.2 + 0.2;
-          const sliceEnd = 0.3;
+          const sliceEnd = 0.2;
           const t = Math.max(0, Math.min(1, (p - sliceStart) / sliceEnd));
           item.style.opacity = String(t);
-          /*           item.style.transform = `translateY(${(t - 1) * -50}px)`; */
-          item.style.filter = `blur(${(t - 1) * -2}px)`;
+          item.style.filter = `blur(${(t - 0.8) * -10}px)`;
         });
       },
       {
