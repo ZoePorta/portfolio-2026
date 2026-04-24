@@ -31,15 +31,17 @@ const { hero } = getDict(lang);
             </clipPath>
           </defs>
         </svg>
-        <Image
-          src={photoBottom}
-          alt="Zoe Porta, frontend developer"
-          class="hero__photo hero__photo--bottom"
-          widths={[400, 800]}
-          sizes="(max-width: 640px) 80vw, 400px"
-          loading="eager"
-          fetchpriority="high"
-        />
+        <div class="hero__photo-clip">
+          <Image
+            src={photoBottom}
+            alt="Zoe Porta, frontend developer"
+            class="hero__photo hero__photo--bottom"
+            widths={[400, 800]}
+            sizes="(max-width: 640px) 80vw, 400px"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </div>
         <Image
           src={photoTop}
           alt=""
@@ -202,6 +204,10 @@ const { hero } = getDict(lang);
     initial-value: 56deg;
   }
 
+  .hero__photo-clip {
+    clip-path: url(#blob-clip);
+  }
+
   .hero__photo--bottom {
     background: linear-gradient(
       var(--blob-angle),
@@ -210,8 +216,20 @@ const { hero } = getDict(lang);
       var(--color-periwinkle) 50%,
       var(--color-ice) 84%
     );
-    clip-path: url(#blob-clip);
-    transition: --blob-angle 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: bottom center;
+    transition:
+      --blob-angle 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+      transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hero__photo--top {
+    transform-origin: bottom center;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hero__photo-stack:hover .hero__photo--bottom,
+  .hero__photo-stack:hover .hero__photo--top {
+    transform: scale(1.04);
   }
 
   .hero__photo-stack:hover .hero__photo--bottom {
@@ -348,7 +366,10 @@ const { hero } = getDict(lang);
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .hero__social a {
+    .hero__social a,
+    .hero__photo--bottom,
+    .hero__photo--top,
+    #targetPath {
       transition: none;
     }
   }
