@@ -18,8 +18,7 @@ const { hero } = getDict(lang);
 <section id="about" aria-labelledby="hero-tagline">
   <BackgroundGradientAnimation client:load className="hero__content">
     <!-- Left column: photo -->
-    <div class="hero__photo-col">
-      <div class="hero__photo-stack">
+    <div class="hero__photo-col hero__photo-stack">
         <svg width="0" height="0" style="position:absolute;">
           <defs>
             <clipPath id="blob-clip" clipPathUnits="objectBoundingBox">
@@ -51,7 +50,6 @@ const { hero } = getDict(lang);
           sizes="(max-width: 640px) 80vw, 400px"
           loading="eager"
         />
-      </div>
     </div>
 
     <!-- Right column: text -->
@@ -185,11 +183,8 @@ const { hero } = getDict(lang);
 
   .hero__photo-col {
     position: relative;
-    max-width: 480px;
-  }
-
-  .hero__photo-stack {
-    position: relative;
+    width: min(480px, 100%);
+    margin-inline: auto;
   }
 
   .hero__photo {
