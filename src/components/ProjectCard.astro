@@ -13,20 +13,25 @@ interface Props {
 
 const { project, period, description, linkLive, linkRepo } = Astro.props;
 
-const images = import.meta.glob<{ default: ImageMetadata }>('../assets/images/*.webp', { eager: true });
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  '../assets/images/*.webp',
+  { eager: true },
+);
 const thumbnail = images[`../assets/images/${project.id}.webp`];
 ---
 
 <article class="project-card">
   <div class={`project-card__thumb project-card__thumb--${project.thumbColor}`}>
-    {thumbnail && (
-      <Image
-        src={thumbnail.default}
-        alt=""
-        class="project-card__thumb-img"
-        aria-hidden="true"
-      />
-    )}
+    {
+      thumbnail && (
+        <Image
+          src={thumbnail.default}
+          alt=""
+          class="project-card__thumb-img"
+          aria-hidden="true"
+        />
+      )
+    }
     <div class="project-card__thumb-text">
       <span class="project-card__thumb-title">{project.title}</span>
       <span class="project-card__thumb-period">{period}</span>
@@ -53,7 +58,9 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
               aria-label={`${linkLive} — ${project.title}`}
             >
               {linkLive}
-              <span class="ml-1" aria-hidden="true">↗</span>
+              <span class="ml-1" aria-hidden="true">
+                ↗
+              </span>
             </a>
           </li>
         )
@@ -95,7 +102,10 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .project-card {
+    .project-card,
+    .project-card__thumb-img,
+    .project-card__thumb::after,
+    .project-card__thumb-text {
       transition: none;
     }
   }
@@ -114,6 +124,14 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
     height: auto;
     filter: blur(6px);
     transform: scale(1.08);
+    transition:
+      filter 0.45s ease,
+      transform 0.45s ease;
+  }
+
+  .project-card:hover .project-card__thumb-img {
+    filter: blur(0);
+    transform: scale(1);
   }
 
   .project-card__thumb::after {
@@ -122,6 +140,12 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
     inset: 0;
     z-index: 1;
     pointer-events: none;
+    opacity: 1;
+    transition: opacity 0.45s ease;
+  }
+
+  .project-card:hover .project-card__thumb::after {
+    opacity: 0;
   }
 
   .project-card__thumb-text {
@@ -135,13 +159,22 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
     gap: 0.5rem;
     padding: 2rem;
     text-align: center;
+    transition: opacity 0.45s ease;
+  }
+
+  .project-card:hover .project-card__thumb-text {
+    opacity: 0;
   }
 
   .project-card__thumb--wishin::after {
     background: linear-gradient(
       135deg,
       color-mix(in srgb, var(--color-blush) 82%, transparent),
-      color-mix(in srgb, color-mix(in srgb, var(--color-lavender) 30%, white) 82%, transparent)
+      color-mix(
+        in srgb,
+        color-mix(in srgb, var(--color-lavender) 30%, white) 82%,
+        transparent
+      )
     );
   }
 
@@ -150,7 +183,7 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
   }
 
   .project-card__thumb--hctp::after {
-    background-color: color-mix(in srgb, var(--hctp-dark) 82%, transparent);
+    background-color: color-mix(in srgb, var(--hctp-dark) 50%, transparent);
   }
 
   .project-card__thumb--hctp .project-card__thumb-text {
@@ -161,7 +194,11 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
     background: linear-gradient(
       135deg,
       color-mix(in srgb, var(--color-ice) 82%, transparent),
-      color-mix(in srgb, color-mix(in srgb, var(--color-lavender) 30%, white) 82%, transparent)
+      color-mix(
+        in srgb,
+        color-mix(in srgb, var(--color-lavender) 30%, white) 82%,
+        transparent
+      )
     );
   }
 
@@ -237,5 +274,4 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
   .project-card__link--repo {
     --color: var(--color-ice);
   }
-
 </style>
