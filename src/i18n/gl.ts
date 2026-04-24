@@ -60,6 +60,7 @@ export const gl = {
     },
     link_live: 'Ver web',
     link_repo: 'GitHub',
+    video_button: 'Ver demo',
   },
 
   // Contact

@@ -60,6 +60,7 @@ export const en = {
     },
     link_live: 'Visit site',
     link_repo: 'GitHub',
+    video_button: 'View demo',
   },
 
   // Contact
