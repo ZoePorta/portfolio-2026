@@ -9,9 +9,22 @@ interface Props {
   description: string;
   linkLive: string;
   linkRepo: string;
+  linkVideo: string;
 }
 
-const { project, period, description, linkLive, linkRepo } = Astro.props;
+const { project, period, description, linkLive, linkRepo, linkVideo } =
+  Astro.props;
+
+let embedUrl: string | undefined;
+if (project.videoUrl) {
+  try {
+    const raw = project.videoUrl.startsWith('http')
+      ? project.videoUrl
+      : `https://${project.videoUrl}`;
+    const videoId = new URL(raw).searchParams.get('v');
+    if (videoId) embedUrl = `https://www.youtube.com/embed/${videoId}`;
+  } catch {}
+}
 
 const images = import.meta.glob<{ default: ImageMetadata }>(
   '../assets/images/*.webp',
@@ -48,7 +61,7 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
 
     <menu class="project-card__links">
       {
-        project.liveUrl && (
+        project.liveUrl ? (
           <li>
             <a
               href={project.liveUrl}
@@ -63,6 +76,22 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
               </span>
             </a>
           </li>
+        ) : (
+          embedUrl && (
+            <li>
+              <button
+                type="button"
+                class="pill project-card__link project-card__video-btn"
+                data-dialog-id={`video-modal-${project.id}`}
+                aria-label={`${linkVideo} — ${project.title}`}
+              >
+                {linkVideo}
+                <span class="ml-1" aria-hidden="true">
+                  ▶
+                </span>
+              </button>
+            </li>
+          )
         )
       }
       <li>
@@ -79,6 +108,69 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
     </menu>
   </div>
 </article>
+
+{
+  embedUrl && (
+    <dialog
+      id={`video-modal-${project.id}`}
+      class="video-modal"
+      aria-label={project.title}
+    >
+      <div class="video-modal__inner">
+        <button
+          type="button"
+          class="video-modal__close"
+          data-close-modal
+          aria-label="Close"
+        >
+          ✕
+        </button>
+        <iframe
+          data-src={embedUrl}
+          src=""
+          title={project.title}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          class="video-modal__iframe"
+          loading="lazy"
+        />
+      </div>
+    </dialog>
+  )
+}
+
+<script>
+  document
+    .querySelectorAll<HTMLButtonElement>('.project-card__video-btn')
+    .forEach((btn) => {
+      const dialogId = btn.dataset.dialogId!;
+      const dialog = document.getElementById(
+        dialogId,
+      ) as HTMLDialogElement | null;
+      if (!dialog) return;
+
+      const iframe = dialog.querySelector<HTMLIFrameElement>(
+        '.video-modal__iframe',
+      );
+
+      btn.addEventListener('click', () => {
+        if (iframe) iframe.src = iframe.dataset.src ?? '';
+        dialog.showModal();
+      });
+
+      dialog.addEventListener('close', () => {
+        if (iframe) iframe.src = '';
+      });
+
+      dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) dialog.close();
+      });
+
+      dialog
+        .querySelector('[data-close-modal]')
+        ?.addEventListener('click', () => dialog.close());
+    });
+</script>
 
 <style>
   /* ── Card shell ─────────────────────────────────────────── */
@@ -273,5 +365,101 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
 
   .project-card__link--repo {
     --color: var(--color-ice);
+  }
+
+  .project-card__video-btn {
+    font: inherit;
+    cursor: pointer;
+  }
+
+  /* ── Video modal ─────────────────────────────────────────── */
+
+  .video-modal {
+    border: none;
+    border-radius: var(--radius-lg);
+    padding: 0;
+    width: min(860px, 92vw);
+    background: transparent;
+    margin: auto;
+    opacity: 0;
+    transform: scale(0.95);
+    filter: blur(20px);
+    transition:
+      opacity 0.25s ease,
+      transform 0.25s ease,
+      display 0.25s allow-discrete,
+      overlay 0.25s allow-discrete,
+      filter 0.5s ease;
+  }
+
+  .video-modal[open] {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+
+  @starting-style {
+    .video-modal[open] {
+      opacity: 0;
+      transform: scale(0.95);
+      filter: blur(20px);
+    }
+  }
+
+  .video-modal::backdrop {
+    background: color-mix(in srgb, var(--color-text-primary) 70%, transparent);
+    backdrop-filter: blur(4px);
+    opacity: 0;
+    transition:
+      opacity 0.25s ease,
+      display 0.25s allow-discrete,
+      overlay 0.25s allow-discrete;
+  }
+
+  .video-modal[open]::backdrop {
+    opacity: 1;
+  }
+
+  @starting-style {
+    .video-modal[open]::backdrop {
+      opacity: 0;
+    }
+  }
+
+  .video-modal__inner {
+    position: relative;
+    background-color: black;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+
+  .video-modal__close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 10;
+    background: color-mix(in srgb, var(--color-text-primary) 60%, transparent);
+    color: var(--color-white);
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .video-modal__close:hover {
+    background: var(--color-text-primary);
+  }
+
+  .video-modal__iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: none;
   }
 </style>
