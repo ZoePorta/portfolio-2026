@@ -68,6 +68,14 @@ export const gl = {
     label: 'falamos?',
     title: 'Contacto',
     cta: 'Enviar mensaxe',
+    send: 'Enviar',
+    back: 'Volver',
+    name_label: 'Nome',
+    email_label: 'Email',
+    message_label: 'Mensaxe',
+    name_placeholder: 'O teu nome',
+    email_placeholder: 'O teu email',
+    message_placeholder: 'Escribe a túa mensaxe aquí...',
   },
 
   // Footer

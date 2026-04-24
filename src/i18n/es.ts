@@ -68,6 +68,14 @@ export const es = {
     label: '¿hablamos?',
     title: 'Contacto',
     cta: 'Enviar mensaje',
+    send: 'Enviar',
+    back: 'Volver',
+    name_label: 'Nombre',
+    email_label: 'Email',
+    message_label: 'Mensaxe',
+    name_placeholder: 'Tu nombre',
+    email_placeholder: 'Tu email',
+    message_placeholder: 'Escribe tu mensaje aquí...',
   },
 
   // Footer

@@ -68,6 +68,14 @@ export const en = {
     label: "let's talk?",
     title: 'Contact',
     cta: 'Send message',
+    send: 'Send',
+    back: 'Back',
+    name_label: 'Name',
+    email_label: 'Email',
+    message_label: 'Message',
+    name_placeholder: 'Your name',
+    email_placeholder: 'Your email',
+    message_placeholder: 'Write your message here...',
   },
 
   // Footer
