@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
-import fotoZoe from '../assets/images/fotoZoe.png';
+import photoBottom from '../assets/images/photo-bottom.webp';
+import photoTop from '../assets/images/photo-top.webp';
 import { useTranslations, getDict, type Locale } from '../i18n/utils';
 import { config } from '../data/config';
 import { BackgroundGradientAnimation } from './react/BackgroundGradientAnimation';
@@ -18,15 +19,37 @@ const { hero } = getDict(lang);
   <BackgroundGradientAnimation client:load className="hero__content">
     <!-- Left column: photo -->
     <div class="hero__photo-col">
-      <Image
-        src={fotoZoe}
-        alt="Zoe Porta, frontend developer"
-        class="hero__photo"
-        widths={[400, 800]}
-        sizes="(max-width: 640px) 80vw, 400px"
-        loading="eager"
-        fetchpriority="high"
-      />
+      <div class="hero__photo-stack">
+        <svg width="0" height="0" style="position:absolute;">
+          <defs>
+            <clipPath id="blob-clip" clipPathUnits="objectBoundingBox">
+              <path
+                id="targetPath"
+                transform="scale(0.03779)"
+                d="M4.35,7.18 C3.89,7.19 3.44,7.3 3.02,7.53 C1.48,8.39 1.47,10.72 0.98,12.41 C0.5,14.09 0.25,15.84 0.1,17.58 C-0.04,19.32 0.04,21.29 1.11,22.59 C2.18,23.88 4.23,24.54 6.27,24.87 C8.3,25.23 10.29,25.29 13.27,25.72 C16.27,26.15 20.23,26.94 22.59,25.78 C24.94,24.62 25.67,21.49 26.13,18.36 C26.59,15.23 26.78,12.08 24.6,10.77 C22.42,9.45 17.88,9.97 14.92,9.91 C11.97,9.86 10.62,9.2 8.72,8.45 C7.3,7.89 5.75,7.13 4.35,7.18 Z"
+              ></path>
+            </clipPath>
+          </defs>
+        </svg>
+        <Image
+          src={photoBottom}
+          alt="Zoe Porta, frontend developer"
+          class="hero__photo hero__photo--bottom"
+          widths={[400, 800]}
+          sizes="(max-width: 640px) 80vw, 400px"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <Image
+          src={photoTop}
+          alt=""
+          aria-hidden="true"
+          class="hero__photo hero__photo--top"
+          widths={[400, 800]}
+          sizes="(max-width: 640px) 80vw, 400px"
+          loading="eager"
+        />
+      </div>
     </div>
 
     <!-- Right column: text -->
@@ -163,9 +186,52 @@ const { hero } = getDict(lang);
     max-width: 480px;
   }
 
+  .hero__photo-stack {
+    position: relative;
+  }
+
   .hero__photo {
     width: 100%;
     height: auto;
+    display: block;
+  }
+
+  @property --blob-angle {
+    syntax: '<angle>';
+    inherits: false;
+    initial-value: 56deg;
+  }
+
+  .hero__photo--bottom {
+    background: linear-gradient(
+      var(--blob-angle),
+      var(--color-sakura) 5%,
+      var(--color-lavender) 30%,
+      var(--color-periwinkle) 50%,
+      var(--color-ice) 84%
+    );
+    clip-path: url(#blob-clip);
+    transition: --blob-angle 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hero__photo-stack:hover .hero__photo--bottom {
+    --blob-angle: 210deg;
+  }
+
+  .hero__photo-stack:hover #targetPath {
+    d: path(
+      'M7.66,7.44 C6.69,7.14 5.62,6.87 4.60,6.84 C3.58,6.80 2.62,6.99 1.88,7.61 C0.53,8.74 0.68,11.02 0.8,12.78 C0.95,14.86 2.77,16.92 2.95,18.66 C3.14,20.4 1.12,23.69 2.42,24.76 C3.71,25.83 5.85,26.09 7.91,26.05 C9.98,26.01 11.94,25.7 14.95,25.56 C17.97,25.42 22.01,25.45 24.12,23.86 C26.2,22.28 23.59,20.72 23.45,17.56 C23.31,14.4 22.91,11.27 20.52,10.39 C18.13,9.51 16.51,9.22 13.6,9.72 C10.69,10.22 10.32,8.27 7.66,7.44 Z'
+    );
+  }
+
+  #targetPath {
+    transition: d 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .hero__photo--top {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
   }
 
   /* ── Text column ─────────────────────────────────────────────── */
