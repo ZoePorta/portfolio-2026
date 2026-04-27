@@ -23,106 +23,203 @@ const githubDisplay = config.github.value.replace('https://', '');
       {t('contact.title')}
     </h2>
 
-    <ul class="contact__items" role="list">
-      <li>
-        <a
-          class="contact__item"
-          href={config.linkedin.value}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`LinkedIn — ${linkedinDisplay}`}
-        >
-          <span
-            class="contact__icon"
-            style={`background: ${config.linkedin.backgroundColor}`}
-            aria-hidden="true"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              focusable="false"
+    <div class="contact__panels">
+      <!-- Links panel -->
+      <div class="contact__links-panel">
+        <ul class="contact__items" role="list">
+          <li>
+            <a
+              class="contact__item"
+              href={config.linkedin.value}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`LinkedIn — ${linkedinDisplay}`}
             >
-              <path
-                d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.989V9h3.12v1.561h.042c.435-.823 1.496-1.691 3.078-1.691 3.292 0 3.9 2.167 3.9 4.984v6.598zM5.337 7.433a1.81 1.81 0 1 1 0-3.62 1.81 1.81 0 0 1 0 3.62zM6.956 20.452H3.717V9h3.239v11.452z"
-              ></path>
-            </svg>
-          </span>
-          <span class="contact__item-text">
-            <span class="contact__item-label">{config.linkedin.label}</span>
-            <span class="contact__item-value">{linkedinDisplay}</span>
-          </span>
-        </a>
-      </li>
+              <span
+                class="contact__icon"
+                style={`background: ${config.linkedin.backgroundColor}`}
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  focusable="false"
+                >
+                  <path
+                    d="M20.447 20.452H17.21v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.989V9h3.12v1.561h.042c.435-.823 1.496-1.691 3.078-1.691 3.292 0 3.9 2.167 3.9 4.984v6.598zM5.337 7.433a1.81 1.81 0 1 1 0-3.62 1.81 1.81 0 0 1 0 3.62zM6.956 20.452H3.717V9h3.239v11.452z"
+                  ></path>
+                </svg>
+              </span>
+              <span class="contact__item-text">
+                <span class="contact__item-label">{config.linkedin.label}</span>
+                <span class="contact__item-value">{linkedinDisplay}</span>
+              </span>
+            </a>
+          </li>
 
-      <li>
-        <a
-          class="contact__item"
-          href={config.github.value}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label={`GitHub — ${githubDisplay}`}
-        >
-          <span
-            class="contact__icon"
-            style={`background: ${config.github.backgroundColor}`}
-            aria-hidden="true"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              focusable="false"
+          <li>
+            <a
+              class="contact__item"
+              href={config.github.value}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`GitHub — ${githubDisplay}`}
             >
-              <path
-                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-              ></path>
-            </svg>
-          </span>
-          <span class="contact__item-text">
-            <span class="contact__item-label">{config.github.label}</span>
-            <span class="contact__item-value">{githubDisplay}</span>
-          </span>
-        </a>
-      </li>
+              <span
+                class="contact__icon"
+                style={`background: ${config.github.backgroundColor}`}
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  focusable="false"
+                >
+                  <path
+                    d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61-.546-1.385-1.335-1.755-1.335-1.755-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                  ></path>
+                </svg>
+              </span>
+              <span class="contact__item-text">
+                <span class="contact__item-label">{config.github.label}</span>
+                <span class="contact__item-value">{githubDisplay}</span>
+              </span>
+            </a>
+          </li>
 
-      <li>
-        <a
-          class="contact__item"
-          href={`mailto:${config.email.value}`}
-          aria-label={`Email — ${config.email.value}`}
-        >
-          <span
-            class="contact__icon"
-            style={`background: ${config.email.backgroundColor}`}
-            aria-hidden="true"
-          >
-            <svg
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-              focusable="false"
+          <li>
+            <a
+              class="contact__item"
+              href={`mailto:${config.email.value}`}
+              aria-label={`Email — ${config.email.value}`}
             >
-              <path
-                d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
-              ></path>
-            </svg>
-          </span>
-          <span class="contact__item-text">
-            <span class="contact__item-label">{config.email.label}</span>
-            <span class="contact__item-value">{config.email.value}</span>
-          </span>
-        </a>
-      </li>
-    </ul>
+              <span
+                class="contact__icon"
+                style={`background: ${config.email.backgroundColor}`}
+                aria-hidden="true"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                  focusable="false"
+                >
+                  <path
+                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
+                  ></path>
+                </svg>
+              </span>
+              <span class="contact__item-text">
+                <span class="contact__item-label">{config.email.label}</span>
+                <span class="contact__item-value">{config.email.value}</span>
+              </span>
+            </a>
+          </li>
+        </ul>
+      </div>
 
-    <button class="btn btn--primary contact__cta" type="button">
-      {t('contact.cta')}
-    </button>
+      <!-- Form panel -->
+      <div
+        class="contact__form-panel"
+        aria-hidden="true"
+        data-msg-success={t('contact.form.success')}
+        data-msg-error={t('contact.form.error')}
+      >
+        <div class="contact__form-states">
+          <!-- Fields -->
+          <form
+            class="contact__form"
+            name="contact"
+            method="POST"
+            data-netlify="true"
+          >
+            <input type="hidden" name="form-name" value="contact" />
+            <div class="contact__field">
+              <label for="contact-name" class="contact__field-label">
+                {t('contact.form.name_label')}
+              </label>
+              <input
+                id="contact-name"
+                class="contact__input"
+                type="text"
+                name="name"
+                placeholder={t('contact.form.name_placeholder')}
+                required
+                tabindex="-1"
+              />
+            </div>
+            <div class="contact__field">
+              <label for="contact-email" class="contact__field-label">
+                {t('contact.form.email_label')}
+              </label>
+              <input
+                id="contact-email"
+                class="contact__input"
+                type="email"
+                name="email"
+                placeholder={t('contact.form.email_placeholder')}
+                required
+                tabindex="-1"
+              />
+            </div>
+            <div class="contact__field">
+              <label for="contact-message" class="contact__field-label">
+                {t('contact.form.message_label')}
+              </label>
+              <textarea
+                id="contact-message"
+                class="contact__input contact__textarea"
+                name="message"
+                placeholder={t('contact.form.message_placeholder')}
+                required
+                tabindex="-1"
+              ></textarea>
+            </div>
+          </form>
+
+          <!-- Loader -->
+          <div class="contact__form-loader" aria-hidden="true">
+            <div class="contact__loader-dots">
+              <span class="contact__loader-dot"></span>
+              <span class="contact__loader-dot"></span>
+              <span class="contact__loader-dot"></span>
+            </div>
+          </div>
+
+          <!-- Feedback -->
+          <div
+            class="contact__form-feedback"
+            aria-hidden="true"
+            role="status"
+            aria-live="polite"
+          >
+            <p class="contact__form-feedback-msg"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact__actions">
+      <button
+        class="btn btn--primary contact__cta"
+        type="button"
+        data-text-full={t('contact.cta')}
+        data-text-short={t('contact.form.send')}
+      >
+        {t('contact.cta')}
+      </button>
+      <button class="btn btn--secondary contact__back" type="button">
+        {t('contact.form.back')}
+      </button>
+    </div>
   </div>
 </section>
 
 <script>
-  import { animateMini, inView } from 'motion';
+  import { animate, animateMini, inView } from 'motion';
 
+  // ── Entrance animation ───────────────────────────────────
   const card = document.querySelector<HTMLElement>('.contact__card');
+
   if (card && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     inView(card, () => {
       animateMini(
@@ -130,12 +227,193 @@ const githubDisplay = config.github.value.replace('https://', '');
         { opacity: [0, 1], scale: [0.96, 1] },
         { duration: 0.5, ease: 'easeOut' },
       );
-
       return () => {
         animateMini(card, { opacity: 0, scale: 0.96 });
       };
     });
   }
+
+  // ── Element refs ─────────────────────────────────────────
+  const linksPanel = document.querySelector<HTMLElement>('.contact__links-panel');
+  const formPanel = document.querySelector<HTMLElement>('.contact__form-panel');
+  const formEl = document.querySelector<HTMLFormElement>('.contact__form');
+  const loaderEl = document.querySelector<HTMLElement>('.contact__form-loader');
+  const feedbackEl = document.querySelector<HTMLElement>('.contact__form-feedback');
+  const feedbackMsgEl = document.querySelector<HTMLElement>('.contact__form-feedback-msg');
+  const ctaBtn = document.querySelector<HTMLButtonElement>('.contact__cta');
+  const backBtn = document.querySelector<HTMLButtonElement>('.contact__back');
+  const linksAnchors = document.querySelectorAll<HTMLAnchorElement>('.contact__links-panel a');
+  const formInputs = document.querySelectorAll<HTMLElement>(
+    '.contact__form-panel input:not([type="hidden"]), .contact__form-panel textarea',
+  );
+
+  const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const DUR = REDUCED ? 0 : 0.3;
+  const BLUR_IN = REDUCED ? 'blur(0px)' : 'blur(4px)';
+
+  const successMsg = formPanel?.dataset.msgSuccess ?? '';
+  const errorMsg = formPanel?.dataset.msgError ?? '';
+
+  // ── State ────────────────────────────────────────────────
+  type FormState = 'fields' | 'loading' | 'success' | 'error';
+  let formOpen = false;
+  let animating = false;
+  let formState: FormState = 'fields';
+
+  function stateEl(state: FormState): HTMLElement | null {
+    if (state === 'fields') return formEl;
+    if (state === 'loading') return loaderEl;
+    return feedbackEl;
+  }
+
+  // ── Inner form state transitions (fade) ──────────────────
+  async function setFormState(next: FormState) {
+    if (formState === next) return;
+
+    const prevEl = stateEl(formState);
+    const nextEl = stateEl(next);
+    if (!prevEl || !nextEl) return;
+
+    if (!REDUCED) await animate(prevEl, { opacity: 0 }, { duration: 0.15 });
+    prevEl.style.visibility = 'hidden';
+    prevEl.setAttribute('aria-hidden', 'true');
+
+    if (next === 'success' || next === 'error') {
+      if (feedbackMsgEl) feedbackMsgEl.textContent = next === 'success' ? successMsg : errorMsg;
+      feedbackEl?.removeAttribute('aria-hidden');
+    }
+
+    nextEl.style.visibility = 'visible';
+    if (!REDUCED) await animate(nextEl, { opacity: [0, 1] }, { duration: 0.2 });
+
+    formState = next;
+  }
+
+  // ── Fetch submission ─────────────────────────────────────
+  async function submitForm() {
+    if (!formEl || !ctaBtn) return;
+
+    ctaBtn.disabled = true;
+    if (backBtn) backBtn.disabled = true;
+    await setFormState('loading');
+
+    try {
+      const data = new URLSearchParams();
+      new FormData(formEl).forEach((value, key) => {
+        if (typeof value === 'string') data.append(key, value);
+      });
+
+      const res = await fetch(window.location.pathname, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: data.toString(),
+      });
+
+      if (!res.ok) throw new Error('Server error');
+
+      await setFormState('success');
+      formEl.reset();
+      if (backBtn) backBtn.disabled = false;
+    } catch {
+      await setFormState('error');
+      ctaBtn.disabled = false;
+      if (backBtn) backBtn.disabled = false;
+    }
+  }
+
+  // ── Panel open / close ───────────────────────────────────
+  async function openForm() {
+    if (animating || formOpen || !linksPanel || !formPanel || !card) return;
+    animating = true;
+    formOpen = true;
+
+    linksAnchors.forEach(a => a.setAttribute('tabindex', '-1'));
+
+    const formEnter = animate(
+      formPanel,
+      { x: [-28, 0], opacity: [0, 1], filter: [BLUR_IN, 'blur(0px)'] },
+      { duration: DUR, ease: 'easeOut' },
+    );
+    formPanel.style.visibility = 'visible';
+    formPanel.removeAttribute('aria-hidden');
+
+    if (ctaBtn?.dataset.textShort) ctaBtn.textContent = ctaBtn.dataset.textShort;
+    card.classList.add('contact--form-open');
+
+    await Promise.all([
+      animate(linksPanel, { x: 28, opacity: 0, filter: BLUR_IN }, { duration: DUR, ease: 'easeIn' }),
+      formEnter,
+    ]);
+
+    linksPanel.style.visibility = 'hidden';
+    formInputs.forEach(el => el.removeAttribute('tabindex'));
+    animating = false;
+  }
+
+  async function closeForm() {
+    if (animating || !formOpen || !linksPanel || !formPanel || !card) return;
+    animating = true;
+    formOpen = false;
+
+    formInputs.forEach(el => el.setAttribute('tabindex', '-1'));
+
+    const linksEnter = animate(
+      linksPanel,
+      { x: [-28, 0], opacity: [0, 1], filter: [BLUR_IN, 'blur(0px)'] },
+      { duration: DUR, ease: 'easeOut' },
+    );
+    linksPanel.style.visibility = 'visible';
+
+    if (ctaBtn?.dataset.textFull) ctaBtn.textContent = ctaBtn.dataset.textFull;
+    card.classList.remove('contact--form-open');
+
+    await Promise.all([
+      animate(formPanel, { x: 28, opacity: 0, filter: BLUR_IN }, { duration: DUR, ease: 'easeIn' }),
+      linksEnter,
+    ]);
+
+    formPanel.style.visibility = 'hidden';
+    formPanel.setAttribute('aria-hidden', 'true');
+    linksAnchors.forEach(a => a.removeAttribute('tabindex'));
+
+    // Reset inner state invisibly after panel is hidden
+    if (formState !== 'fields') {
+      const prevEl = stateEl(formState);
+      if (prevEl) {
+        prevEl.style.visibility = 'hidden';
+        animate(prevEl, { opacity: 0 }, { duration: 0 });
+      }
+      if (formEl) {
+        formEl.style.visibility = 'visible';
+        animate(formEl, { opacity: 1 }, { duration: 0 });
+      }
+      feedbackEl?.setAttribute('aria-hidden', 'true');
+      formState = 'fields';
+    }
+
+    if (ctaBtn) ctaBtn.disabled = false;
+    if (backBtn) backBtn.disabled = false;
+    animating = false;
+  }
+
+  // ── Form submit (native validation runs before this fires) ─
+  formEl?.addEventListener('submit', async e => {
+    e.preventDefault();
+    await submitForm();
+  });
+
+  // ── CTA: open form, retry or trigger submit ──────────────
+  ctaBtn?.addEventListener('click', () => {
+    if (!formOpen) {
+      openForm();
+    } else if (formState === 'error') {
+      setFormState('fields');
+    } else if (formState === 'fields') {
+      formEl?.requestSubmit();
+    }
+  });
+
+  backBtn?.addEventListener('click', closeForm);
 </script>
 
 <style>
@@ -181,6 +459,23 @@ const githubDisplay = config.github.value.replace('https://', '');
     margin-bottom: 1.75rem;
   }
 
+  /* ── Panels (grid overlap: container = max height of both) ─ */
+
+  .contact__panels {
+    display: grid;
+    margin-bottom: 1.75rem;
+  }
+
+  .contact__links-panel,
+  .contact__form-panel {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .contact__form-panel {
+    visibility: hidden;
+  }
+
   /* ── Contact items ──────────────────────────────────────── */
 
   .contact__items {
@@ -188,7 +483,6 @@ const githubDisplay = config.github.value.replace('https://', '');
     display: flex;
     flex-direction: column;
     gap: 0.625rem;
-    margin-bottom: 1.75rem;
   }
 
   .contact__item {
@@ -256,12 +550,173 @@ const githubDisplay = config.github.value.replace('https://', '');
     color: var(--color-text-primary);
   }
 
-  /* ── CTA ────────────────────────────────────────────────── */
+  /* ── Form states (grid overlap: loader/feedback = same cell as form) */
+
+  .contact__form-states {
+    display: grid;
+  }
+
+  .contact__form,
+  .contact__form-loader,
+  .contact__form-feedback {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .contact__form-loader,
+  .contact__form-feedback {
+    visibility: hidden;
+    opacity: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* ── Form fields ────────────────────────────────────────── */
+
+  .contact__form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  .contact__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .contact__field-label {
+    font-size: 0.6875rem;
+    font-weight: 500;
+    color: var(--color-text-secondary);
+    text-transform: capitalize;
+    padding-inline: 0.25rem;
+  }
+
+  .contact__input {
+    padding: 0.625rem 1rem;
+    background: var(--glass-item-bg);
+    border: 0.5px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    outline: none;
+    width: 100%;
+    transition:
+      background 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .contact__input::placeholder {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+  }
+
+  .contact__input:focus {
+    background: var(--glass-item-hover);
+    box-shadow: 0 2px 12px
+      color-mix(in srgb, var(--color-sakura) 22%, transparent);
+  }
+
+  .contact__textarea {
+    resize: none;
+    min-height: 78px;
+  }
+
+  /* ── Loader ─────────────────────────────────────────────── */
+
+  .contact__loader-dots {
+    display: flex;
+    gap: 6px;
+  }
+
+  .contact__loader-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-sakura);
+    animation: dotBounce 1.2s ease-in-out infinite;
+  }
+
+  .contact__loader-dot:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  .contact__loader-dot:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+
+  @keyframes dotBounce {
+    0%,
+    60%,
+    100% {
+      transform: translateY(0);
+      opacity: 0.35;
+    }
+    30% {
+      transform: translateY(-9px);
+      opacity: 1;
+    }
+  }
+
+  /* ── Feedback ───────────────────────────────────────────── */
+
+  .contact__form-feedback-msg {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  /* ── Actions ────────────────────────────────────────────── */
+
+  .contact__actions {
+    display: flex;
+    gap: 0.75rem;
+  }
 
   .contact__cta {
-    width: 100%;
+    flex: 1;
     border: none;
     cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
+  .contact__cta:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .contact__back {
+    flex: 1;
+    max-width: 0;
+    padding-inline: 0;
+    overflow: hidden;
+    opacity: 0;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    transition:
+      max-width 0.35s ease,
+      padding-inline 0.35s ease,
+      opacity 0.3s ease;
+  }
+
+  .contact__back:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+
+  .contact--form-open .contact__back {
+    max-width: 300px;
+    padding-inline: 1.875rem;
+    opacity: 1;
   }
 
   /* ── Motion: initial hidden state ───────────────────────── */
@@ -275,8 +730,16 @@ const githubDisplay = config.github.value.replace('https://', '');
   /* ── Reduced motion ─────────────────────────────────────── */
 
   @media (prefers-reduced-motion: reduce) {
-    .contact__item {
+    .contact__item,
+    .contact__input,
+    .contact__back,
+    .contact__loader-dot {
       transition: none;
+      animation: none;
+    }
+
+    .contact__loader-dot {
+      opacity: 1;
     }
   }
 
