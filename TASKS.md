@@ -31,7 +31,7 @@
 
 - [x] Parallax floral background
 - [x] Glassmorphism card
-- [ ] Netlify Forms integration
+- [x] Netlify Forms integration
 
 ## 6. Polish & launch
 
@@ -41,4 +41,4 @@
 - [ ] Lighthouse audit
 - [x] All copy in ES/EN/GL
 - [x] Tagline final review
-- [ ] Deploy to zoecodes.me
+- [x] Deploy to zoecodes.me
