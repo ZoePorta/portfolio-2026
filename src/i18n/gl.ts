@@ -68,6 +68,7 @@ export const gl = {
     label: 'falamos?',
     title: 'Contacto',
     cta: 'Enviar mensaxe',
+    email: 'ola@zoecodes.me',
     form: {
       send: 'Enviar',
       back: 'Volver',

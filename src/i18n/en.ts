@@ -68,6 +68,7 @@ export const en = {
     label: "let's talk?",
     title: 'Contact',
     cta: 'Send message',
+    email: 'hello@zoecodes.me',
     form: {
       send: 'Send',
       back: 'Back',

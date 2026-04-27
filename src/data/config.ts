@@ -1,6 +1,6 @@
 export const config = {
   email: {
-    value: 'hola@zoecodes.me',
+    value: 'hello@zoecodes.me',
     label: 'email',
     backgroundColor: 'var(--color-sakura)',
   },

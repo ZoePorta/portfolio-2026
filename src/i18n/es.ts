@@ -68,6 +68,7 @@ export const es = {
     label: '¿hablamos?',
     title: 'Contacto',
     cta: 'Enviar mensaje',
+    email: 'hola@zoecodes.me',
     form: {
       send: 'Enviar',
       back: 'Volver',

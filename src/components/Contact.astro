@@ -110,7 +110,7 @@ const githubDisplay = config.github.value.replace('https://', '');
               </span>
               <span class="contact__item-text">
                 <span class="contact__item-label">{config.email.label}</span>
-                <span class="contact__item-value">{config.email.value}</span>
+                <span class="contact__item-value">{t('contact.email')}</span>
               </span>
             </a>
           </li>
@@ -171,8 +171,7 @@ const githubDisplay = config.github.value.replace('https://', '');
                 name="message"
                 placeholder={t('contact.form.message_placeholder')}
                 required
-                tabindex="-1"
-              ></textarea>
+                tabindex="-1"></textarea>
             </div>
           </form>
 
@@ -234,15 +233,23 @@ const githubDisplay = config.github.value.replace('https://', '');
   }
 
   // ── Element refs ─────────────────────────────────────────
-  const linksPanel = document.querySelector<HTMLElement>('.contact__links-panel');
+  const linksPanel = document.querySelector<HTMLElement>(
+    '.contact__links-panel',
+  );
   const formPanel = document.querySelector<HTMLElement>('.contact__form-panel');
   const formEl = document.querySelector<HTMLFormElement>('.contact__form');
   const loaderEl = document.querySelector<HTMLElement>('.contact__form-loader');
-  const feedbackEl = document.querySelector<HTMLElement>('.contact__form-feedback');
-  const feedbackMsgEl = document.querySelector<HTMLElement>('.contact__form-feedback-msg');
+  const feedbackEl = document.querySelector<HTMLElement>(
+    '.contact__form-feedback',
+  );
+  const feedbackMsgEl = document.querySelector<HTMLElement>(
+    '.contact__form-feedback-msg',
+  );
   const ctaBtn = document.querySelector<HTMLButtonElement>('.contact__cta');
   const backBtn = document.querySelector<HTMLButtonElement>('.contact__back');
-  const linksAnchors = document.querySelectorAll<HTMLAnchorElement>('.contact__links-panel a');
+  const linksAnchors = document.querySelectorAll<HTMLAnchorElement>(
+    '.contact__links-panel a',
+  );
   const formInputs = document.querySelectorAll<HTMLElement>(
     '.contact__form-panel input:not([type="hidden"]), .contact__form-panel textarea',
   );
@@ -279,7 +286,8 @@ const githubDisplay = config.github.value.replace('https://', '');
     prevEl.setAttribute('aria-hidden', 'true');
 
     if (next === 'success' || next === 'error') {
-      if (feedbackMsgEl) feedbackMsgEl.textContent = next === 'success' ? successMsg : errorMsg;
+      if (feedbackMsgEl)
+        feedbackMsgEl.textContent = next === 'success' ? successMsg : errorMsg;
       feedbackEl?.removeAttribute('aria-hidden');
     }
 
@@ -327,7 +335,7 @@ const githubDisplay = config.github.value.replace('https://', '');
     animating = true;
     formOpen = true;
 
-    linksAnchors.forEach(a => a.setAttribute('tabindex', '-1'));
+    linksAnchors.forEach((a) => a.setAttribute('tabindex', '-1'));
 
     const formEnter = animate(
       formPanel,
@@ -337,16 +345,21 @@ const githubDisplay = config.github.value.replace('https://', '');
     formPanel.style.visibility = 'visible';
     formPanel.removeAttribute('aria-hidden');
 
-    if (ctaBtn?.dataset.textShort) ctaBtn.textContent = ctaBtn.dataset.textShort;
+    if (ctaBtn?.dataset.textShort)
+      ctaBtn.textContent = ctaBtn.dataset.textShort;
     card.classList.add('contact--form-open');
 
     await Promise.all([
-      animate(linksPanel, { x: 28, opacity: 0, filter: BLUR_IN }, { duration: DUR, ease: 'easeIn' }),
+      animate(
+        linksPanel,
+        { x: 28, opacity: 0, filter: BLUR_IN },
+        { duration: DUR, ease: 'easeIn' },
+      ),
       formEnter,
     ]);
 
     linksPanel.style.visibility = 'hidden';
-    formInputs.forEach(el => el.removeAttribute('tabindex'));
+    formInputs.forEach((el) => el.removeAttribute('tabindex'));
     animating = false;
   }
 
@@ -355,7 +368,7 @@ const githubDisplay = config.github.value.replace('https://', '');
     animating = true;
     formOpen = false;
 
-    formInputs.forEach(el => el.setAttribute('tabindex', '-1'));
+    formInputs.forEach((el) => el.setAttribute('tabindex', '-1'));
 
     const linksEnter = animate(
       linksPanel,
@@ -368,13 +381,17 @@ const githubDisplay = config.github.value.replace('https://', '');
     card.classList.remove('contact--form-open');
 
     await Promise.all([
-      animate(formPanel, { x: 28, opacity: 0, filter: BLUR_IN }, { duration: DUR, ease: 'easeIn' }),
+      animate(
+        formPanel,
+        { x: 28, opacity: 0, filter: BLUR_IN },
+        { duration: DUR, ease: 'easeIn' },
+      ),
       linksEnter,
     ]);
 
     formPanel.style.visibility = 'hidden';
     formPanel.setAttribute('aria-hidden', 'true');
-    linksAnchors.forEach(a => a.removeAttribute('tabindex'));
+    linksAnchors.forEach((a) => a.removeAttribute('tabindex'));
 
     // Reset inner state invisibly after panel is hidden
     if (formState !== 'fields') {
@@ -397,7 +414,7 @@ const githubDisplay = config.github.value.replace('https://', '');
   }
 
   // ── Form submit (native validation runs before this fires) ─
-  formEl?.addEventListener('submit', async e => {
+  formEl?.addEventListener('submit', async (e) => {
     e.preventDefault();
     await submitForm();
   });
