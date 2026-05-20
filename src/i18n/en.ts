@@ -1,8 +1,8 @@
 export const en = {
   // Metadata
   site: {
-    title: 'Zoe Porta — Frontend Developer',
-    description: 'Portfolio of Zoe Porta, frontend developer.',
+    title: 'Zoe Porta — Software Engineer',
+    description: 'Portfolio of Zoe Porta, software engineer.',
   },
 
   // Navigation
@@ -15,7 +15,7 @@ export const en = {
 
   // Hero
   hero: {
-    role: 'Frontend Developer · Creative Coder',
+    role: 'Software Engineer · Creative Coder',
     tagline: "Hello, I'm",
     subtitle: 'I build things as solid underneath as beautiful on the surface.',
     cta_projects: 'See projects',

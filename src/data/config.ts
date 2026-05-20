@@ -15,7 +15,11 @@ export const config = {
     backgroundColor: 'var(--color-text-primary)',
   },
   cvUrl: {
-    value: 'https://canva.link/29ls8iamk7tyg03',
+    value: {
+      es: 'https://canva.link/6otrr48qiu7ipfu',
+      en: 'https://canva.link/2aviqgx6bow442x',
+      gl: 'https://canva.link/6otrr48qiu7ipfu',
+    },
     label: 'cv',
     backgroundColor: 'var(--color-sakura)',
   },
