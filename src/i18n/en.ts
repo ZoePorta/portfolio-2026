@@ -2,7 +2,7 @@ export const en = {
   // Metadata
   site: {
     title: 'Zoe Porta — Software Engineer',
-    description: 'Portfolio of Zoe Porta, software engineer.',
+    description: 'Zoe Porta, software engineer focused on frontend. Building interfaces as solid on the inside as they are beautiful on the outside. Open to remote work.',
   },
 
   // Navigation

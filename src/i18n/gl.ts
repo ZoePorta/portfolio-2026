@@ -2,7 +2,7 @@ export const gl = {
   // Metadata
   site: {
     title: 'Zoe Porta — Software Engineer',
-    description: 'Portfolio de Zoe Porta, software engineer.',
+    description: 'Zoe Porta, software engineer especializada en frontend. Constrúe interfaces tan sólidas por dentro como bonitas por fóra. Dispoñible para traballo en remoto.',
   },
 
   // Navigation
