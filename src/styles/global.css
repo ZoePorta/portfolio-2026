@@ -192,6 +192,11 @@
 /* ─── Components ─────────────────────────────────────────────────────────── */
 
 @layer components {
+
+  .navbar__logo{
+    color: color-mix(in hsl, var(--color-periwinkle) 80%, black 35%)
+  }
+
   /* ── Section wave system ─────────────────────────────────────────── */
 
   /*
