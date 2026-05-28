@@ -769,7 +769,10 @@ const githubDisplay = config.github.value.replace('https://', '');
   :global(body.contact-visible)::before {
     content: '';
     position: fixed;
-    inset: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100lvh;
     background: url('/images/contact-flowers.webp') center / cover no-repeat;
     z-index: -1;
     pointer-events: none;
