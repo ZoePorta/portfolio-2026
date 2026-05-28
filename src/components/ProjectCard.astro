@@ -46,6 +46,9 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
           alt=""
           class="project-card__thumb-img"
           aria-hidden="true"
+          widths={[400, 765]}
+          sizes="(max-width: 640px) 100vw, 400px"
+          loading="lazy"
         />
       )
     }
@@ -142,6 +145,7 @@ const thumbnail = images[`../assets/images/${project.id}.webp`];
           src={posterUrl}
           alt=""
           aria-hidden="true"
+          loading="lazy"
           class="video-modal__poster"
         />
       </div>

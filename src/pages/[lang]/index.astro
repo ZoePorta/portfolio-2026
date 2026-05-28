@@ -6,7 +6,7 @@ import Projects from '../../components/Projects.astro';
 import Contact from '../../components/Contact.astro';
 import { getImage } from 'astro:assets';
 import { useTranslations, type Locale } from '../../i18n/utils';
-import photoBottom from '../../assets/images/photo-bottom.webp';
+import photoTop from '../../assets/images/photo-top.webp';
 
 export function getStaticPaths() {
   return [
@@ -20,8 +20,8 @@ const { lang } = Astro.params as { lang: Locale };
 const t = useTranslations(lang);
 
 const [heroImg400, heroImg800] = await Promise.all([
-  getImage({ src: photoBottom, width: 400, format: 'webp' }),
-  getImage({ src: photoBottom, width: 800, format: 'webp' }),
+  getImage({ src: photoTop, width: 400, format: 'webp' }),
+  getImage({ src: photoTop, width: 800, format: 'webp' }),
 ]);
 ---
 
