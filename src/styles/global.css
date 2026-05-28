@@ -1,6 +1,29 @@
 @layer reset, base, components;
-@import url('https://fonts.googleapis.com/css2?family=Marck+Script&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 @import 'tailwindcss';
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/nunito-variablefont_wght-webfont.woff2') format('woff2');
+  font-weight: 200 1000;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nunito';
+  src: url('/fonts/nunito-italic-variablefont_wght-webfont.woff2') format('woff2');
+  font-weight: 200 1000;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Marck Script';
+  src: url('/fonts/marckscript-regular-webfont.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
 /* ─── Gradient animation (Aceternity BackgroundGradientAnimation) ─────────── */
 

@@ -4,7 +4,9 @@ import Hero from '../../components/Hero.astro';
 import TechBand from '../../components/TechBand.astro';
 import Projects from '../../components/Projects.astro';
 import Contact from '../../components/Contact.astro';
+import { getImage } from 'astro:assets';
 import { useTranslations, type Locale } from '../../i18n/utils';
+import photoBottom from '../../assets/images/photo-bottom.webp';
 
 export function getStaticPaths() {
   return [
@@ -16,9 +18,22 @@ export function getStaticPaths() {
 
 const { lang } = Astro.params as { lang: Locale };
 const t = useTranslations(lang);
+
+const [heroImg400, heroImg800] = await Promise.all([
+  getImage({ src: photoBottom, width: 400, format: 'webp' }),
+  getImage({ src: photoBottom, width: 800, format: 'webp' }),
+]);
 ---
 
 <BaseLayout title={t('site.title')} lang={lang}>
+  <link
+    slot="head"
+    rel="preload"
+    as="image"
+    imagesrcset={`${heroImg400.src} 400w, ${heroImg800.src} 800w`}
+    imagesizes="(max-width: 640px) 80vw, 400px"
+    fetchpriority="high"
+  />
   <div class="wave-wrap"><Hero lang={lang} /></div>
   <div class="wave-wrap"><TechBand /></div>
   <div class="wave-wrap"><Projects lang={lang} /></div>

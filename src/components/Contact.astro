@@ -437,6 +437,7 @@ const githubDisplay = config.github.value.replace('https://', '');
   /* ── Section ─────────────────────────────────────────────── */
 
   .contact {
+    content-visibility: auto;
     --glass-card-bg: rgba(255, 255, 255, 0.258);
     --glass-item-bg: rgba(255, 255, 255, 0.6);
     --glass-item-hover: rgba(255, 255, 255, 0.88);
@@ -446,8 +447,6 @@ const githubDisplay = config.github.value.replace('https://', '');
     display: flex;
     align-items: center;
     justify-content: center;
-    background: url('/images/contact-flowers.webp') center / cover no-repeat
-      fixed;
     padding-block: var(--section-padding);
     padding-inline: 1.5rem;
   }
@@ -767,4 +766,22 @@ const githubDisplay = config.github.value.replace('https://', '');
       padding: 2rem 1.5rem;
     }
   }
+
+  :global(body.contact-visible)::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: url('/images/contact-flowers.webp') center / cover no-repeat;
+    z-index: -1;
+    pointer-events: none;
+  }
 </style>
+
+<script>
+  const section = document.querySelector('.contact');
+  if (section) {
+    new IntersectionObserver(([entry]) => {
+      document.body.classList.toggle('contact-visible', entry.isIntersecting);
+    }).observe(section);
+  }
+</script>

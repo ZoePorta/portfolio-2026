@@ -32,6 +32,9 @@ const WAVE_PX = 48; // Source of truth for --wave-height
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/nunito-variablefont_wght-webfont.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/marckscript-regular-webfont.woff2" crossorigin />
+    <slot name="head" />
     <title>{title}</title>
   </head>
   <body>
@@ -156,9 +159,11 @@ const WAVE_PX = 48; // Source of truth for --wave-height
         entries.forEach((e) => setWave(e.target)),
       );
 
-      document.querySelectorAll('.wave-wrap > section').forEach((el) => {
-        ro.observe(el);
-        setWave(el);
+      requestAnimationFrame(() => {
+        document.querySelectorAll('.wave-wrap > section').forEach((el) => {
+          ro.observe(el);
+          setWave(el);
+        });
       });
     </script>
   </body>
