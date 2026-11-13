@@ -8,7 +8,7 @@ Personal portfolio of [Zoe Porta](https://zoecodes.me), Software Engineer. Desig
 
 - **Framework:** Astro 6 (static output, islands architecture)
 - **Interactive islands:** React 19, hydrated only where needed (`client:idle`)
-- **Styling:** Tailwind CSS 4 + hand-written CSS organised with cascade layers (`@layer reset, base, components`)
+- **Styling:** Hand-written CSS organised with cascade layers (@layer) and BEM naming, with Tailwind CSS for a few utility classes
 - **Animations:** Motion + `requestAnimationFrame`
 - **Images:** Sharp (build-time optimisation)
 - **i18n:** Astro native i18n routing (`/es`, `/en`, `/gl`), Spanish as default locale
