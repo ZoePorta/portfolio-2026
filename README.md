@@ -1,43 +1,55 @@
-# Astro Starter Kit: Minimal
+# zoecodes.me — Portfolio
 
-```sh
-pnpm create astro@latest -- --template minimal
-```
+Personal portfolio of [Zoe Porta](https://zoecodes.me), Software Engineer. Designed and developed from scratch, trilingual (Spanish, English and Galician), with a focus on performance, accessibility and a distinctive visual identity.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+**Live site:** [zoecodes.me](https://zoecodes.me)
 
-## 🚀 Project Structure
+## Tech Stack
 
-Inside of your Astro project, you'll see the following folders and files:
+- **Framework:** Astro 6 (static output, islands architecture)
+- **Interactive islands:** React 19, hydrated only where needed (`client:idle`)
+- **Styling:** Tailwind CSS 4 + hand-written CSS organised with cascade layers (`@layer reset, base, components`)
+- **Animations:** Motion + `requestAnimationFrame`
+- **Images:** Sharp (build-time optimisation)
+- **i18n:** Astro native i18n routing (`/es`, `/en`, `/gl`), Spanish as default locale
+- **Language:** TypeScript
+- **Tooling:** ESLint, Prettier, pnpm
+
+## Performance
+
+- Self-hosted fonts to avoid third-party requests and layout shifts.
+- React is shipped only for interactive components, loaded with `client:idle` so it never blocks the first render.
+- Fixed background implemented with a `::before` pseudo-element instead of `background-attachment: fixed`, avoiding costly repaints on scroll.
+- Wave animations driven by `requestAnimationFrame`.
+
+## Accessibility
+
+- Colour palette adjusted to target WCAG AA contrast (4.5:1 for body text, 3:1 for large text).
+- `prefers-reduced-motion` respected: animations are disabled or reduced when the user requests it.
+- Semantic HTML, alternative text for images and ARIA attributes for interactive patterns (menu state with `aria-expanded`/`aria-controls`, current section with `aria-current`, live region with `aria-live`).
+
+## Project Structure
 
 ```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+src/
+├── components/    # Astro components (Hero, Projects, TechBand, Contact…)
+│   └── react/     # Interactive React islands
+├── data/          # Site config and project content
+├── i18n/          # Translations (es, en, gl) and helpers
+├── layouts/       # Base layout
+├── pages/[lang]/  # Localised routes
+└── styles/        # Global styles and cascade layers
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Development
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+```sh
+pnpm install
+pnpm dev       # http://localhost:4321
+pnpm build     # production build in ./dist
+pnpm preview
+```
 
-Any static assets, like images, can be placed in the `public/` directory.
+## License
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+The source code is released under the MIT License. Personal content (texts, images and branding) belongs to Zoe Porta and is not covered by the license.
